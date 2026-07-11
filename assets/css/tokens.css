@@ -1,0 +1,105 @@
+/* ============================================================
+   TOKENS.CSS
+   Pankaj Khamitkar Portfolio — Shared Design System
+   ============================================================
+   Import order: tokens.css → shared.css → case-study.css
+   Each HTML file links all three in <head>.
+   Page-specific color overrides live in a <style> block
+   inside the individual HTML file, after the shared imports.
+   ============================================================ */
+
+/* FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* RESET */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ROOT TOKENS */
+:root {
+  /* Core palette */
+  --ink:           #0D0B09;
+  --ink-soft:      #1C1A17;
+  --paper:         #F7F5F0;
+  --paper-warm:    #EDE9E2;
+  --accent:        #FF6B6B;
+  --accent-pale:   #F5DDD4;
+  --sage:          #3B5240;
+  --sage-pale:     #D5E2D8;
+  --muted:         #74706A;
+  --muted-light:   #A8A49E;
+  --white:         #FDFCFB;
+  --border:        rgba(13, 11, 9, 0.10);
+
+  /* Layout */
+  --nav-h:   72px;
+  --max:     1100px;
+  --gutter:  clamp(24px, 5vw, 80px);
+}
+
+/* BASE */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(1);   transform-origin: top; }
+  50%  { transform: scaleY(0.3); transform-origin: top; }
+  51%  { transform: scaleY(0.3); transform-origin: bottom; }
+  100% { transform: scaleY(1);   transform-origin: bottom; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rd1 { transition-delay: 0.08s; }
+.rd2 { transition-delay: 0.16s; }
+.rd3 { transition-delay: 0.24s; }
+.rd4 { transition-delay: 0.32s; }
+.rd5 { transition-delay: 0.40s; }
+
+/* Homepage reveal delay aliases */
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.40s; }

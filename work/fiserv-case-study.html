@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiserv Card Console &mdash; Pankaj Khamitkar</title>
+<meta name="description" content="Replacing five fragmented legacy applications with a single, workflow-driven platform for Financial Institution support representatives across debit and credit portfolios.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../assets/css/case-study.css">
+
+<style>
+/* ============================================================
+   FISERV: page-specific styles
+   Page accent: blue (#2E5BA8) — distinct identity within shared system
+   ============================================================ */
+
+:root {
+  --page-accent:   #2E5BA8;
+  --accent-mid:    #2E5BA8;
+  --accent-pale:   #D0DCF0;
+  --accent-dim:    #D0DCF0;
+  --dark-bg:       #0E1B2E;
+}
+
+/* HERO: blue-toned dark with grid overlay */
+#hero {
+  background: var(--dark-bg);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(26, 60, 110, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: 10%; left: -5%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(46, 91, 168, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Override shared section-tag colour for blue accent */
+.section-tag         { color: var(--page-accent); }
+.section-tag::before { background: var(--page-accent); }
+
+/* ACT LABEL (Fiserv's unique labelling pattern) */
+.act-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.act-label::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--page-accent);
+  flex-shrink: 0;
+}
+
+.act-label.on-dark { color: rgba(255, 255, 255, 0.4); }
+.act-label.on-dark::before { background: rgba(255, 255, 255, 0.3); }
+
+/* SECTION BACKGROUNDS */
+.section-light { background: var(--paper-warm); }
+.section-blue  { background: var(--dark-bg); color: var(--white); }
+
+/* TYPOGRAPHY */
+.section-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.section-heading em { font-style: italic; color: var(--muted); }
+.section-heading.on-dark { color: var(--white); }
+.section-heading.on-dark em { color: rgba(255, 255, 255, 0.4); }
+
+.body-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 660px;
+}
+
+.body-text + .body-text { margin-top: 1rem; }
+.body-text.on-dark { color: rgba(255, 255, 255, 0.55); }
+
+/* STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+.stat-cell {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.stat-cell:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Fraunces', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.stats-grid.dark {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stats-grid.dark .stat-cell { border-color: rgba(255, 255, 255, 0.1); }
+.stats-grid.dark .stat-number { color: var(--white); }
+.stats-grid.dark .stat-label { color: rgba(255, 255, 255, 0.4); }
+
+/* ROLE BANNER */
+.role-banner {
+  background: var(--page-accent);
+  padding: 2.5rem 3rem;
+  margin: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+}
+
+.role-banner-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.role-item-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.4rem;
+}
+
+.role-item-value {
+  font-size: 15px;
+  color: var(--white);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* CHALLENGE CARDS */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin: 2.5rem 0;
+  border: 1px solid var(--border);
+}
+
+.challenge-card {
+  background: var(--paper);
+  padding: 2rem;
+}
+
+.challenge-number {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--accent-dim);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.04em;
+}
+
+.challenge-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.challenge-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* PROCESS STEPS */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2.5rem 0;
+}
+
+.process-step {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.process-step:last-child { border-right: none; }
+
+.process-step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.process-step-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.process-step-desc { font-size: 13px; color: rgba(255, 255, 255, 0.45); line-height: 1.6; }
+
+/* CONTRIBUTION BLOCK */
+.contribution-block {
+  border-left: 3px solid var(--page-accent);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: rgba(46, 91, 168, 0.06);
+}
+
+.contribution-block-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+  margin-bottom: 0.75rem;
+}
+
+.contribution-block-text { font-size: 15px; line-height: 1.7; color: var(--ink); }
+
+/* SCREEN WRAPPER */
+.screen-wrapper {
+  border: 1px solid var(--border);
+  margin: 2.5rem 0;
+  background: var(--paper-warm);
+  position: relative;
+}
+
+.screen-wrapper.dark {
+  background: #1a2a40;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.screen-placeholder {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.screen-placeholder-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.screen-wrapper.dark .screen-placeholder-label { color: rgba(255, 255, 255, 0.3); }
+
+.screen-placeholder-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--border);
+}
+
+.screen-wrapper.dark .screen-placeholder-icon { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.15); }
+
+.screen-caption {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.screen-wrapper.dark .screen-caption { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); }
+
+/* DECISION ROW */
+.decision-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.decision-col-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.decision-col-label.accent { color: var(--page-accent); border-color: var(--page-accent); }
+.decision-text { font-size: 14px; color: var(--ink); line-height: 1.7; }
+
+/* REFLECTION GRID */
+.reflection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.reflection-cell { background: var(--paper); padding: 2rem; }
+
+.reflection-cell-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+  margin-bottom: 0.75rem;
+}
+
+.reflection-cell-text { font-size: 15px; color: var(--ink); line-height: 1.7; }
+
+/* AUTHOR BLOCK */
+.author-block {
+  padding: 4rem 2rem;
+  background: var(--dark-bg);
+}
+
+.author-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.author-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--page-accent);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 300;
+}
+
+.author-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  color: var(--white);
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+}
+
+.author-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.author-bio { font-size: 14px; color: rgba(255, 255, 255, 0.5); max-width: 480px; line-height: 1.7; }
+
+/* PRINCIPLES GRID */
+.principles-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.principle-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.principle-val { font-size: 14px; color: rgba(255, 255, 255, 0.55); line-height: 1.7; }
+
+/* SECTION INNER OVERRIDE (Fiserv uses 860px max-width) */
+.fiserv .section-inner { max-width: 860px; }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .stats-grid          { grid-template-columns: 1fr 1fr; }
+  .process-steps       { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .stats-grid          { grid-template-columns: 1fr 1fr; }
+  .process-steps       { grid-template-columns: 1fr 1fr; }
+  .challenge-grid      { grid-template-columns: 1fr; }
+  .decision-row        { grid-template-columns: 1fr; }
+  .reflection-grid     { grid-template-columns: 1fr; }
+  .role-banner-inner   { grid-template-columns: 1fr; }
+  .principles-2col     { grid-template-columns: 1fr; }
+  .author-inner        { flex-direction: column; gap: 1.5rem; }
+  .role-banner         { padding: 2rem; }
+}
+
+@media (max-width: 560px) {
+  .stats-grid          { grid-template-columns: 1fr; }
+  .process-steps       { grid-template-columns: 1fr; }
+  .screen-placeholder  { height: 220px; }
+}
+</style>
+</head>
+<body class="fiserv">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">P<span>.</span>K</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../index.html#methodology">Process</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html" class="nav-back">All Projects</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-label">Case Study &mdash; Enterprise FinTech</div>
+  <h1 class="hero-headline">
+    Fiserv<br>
+    Card Console<br>
+    <em>Unified cardholder servicing</em>
+  </h1>
+  <p class="hero-sub">Replacing five fragmented legacy applications with a single, workflow-driven platform for Financial Institution support representatives across debit and credit portfolios.</p>
+  <div class="hero-stat-row">
+    <div>
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Legacy Apps Unified</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">24+</div>
+      <div class="hero-stat-label">Financial Institutions</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">48+</div>
+      <div class="hero-stat-label">Sprints Delivered</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">Production Releases</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="ctx-cell">
+    <div class="ctx-key">Client</div>
+    <div class="ctx-val"><strong>Fiserv</strong><br>United States</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">My Role</div>
+    <div class="ctx-val"><strong>UX Designer</strong><br>Interaction Design Lead (India)</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Duration</div>
+    <div class="ctx-val"><strong>2 Years</strong><br>2020 &ndash; 2021</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Scale</div>
+    <div class="ctx-val"><strong>80+ Contributors</strong><br>3 Countries</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Domain</div>
+    <div class="ctx-val"><strong>Enterprise SaaS</strong><br>FinTech &middot; Card Management</div>
+  </div>
+</div>
+
+<!-- ACT 1: CONTEXT -->
+<section class="section section-light">
+  <div class="section-inner">
+    <p class="act-label reveal">Act 01 / Context</p>
+    <h2 class="section-heading reveal">A fragmented ecosystem serving <em>thousands</em> of cardholders daily</h2>
+    <p class="body-text reveal">Fiserv's card servicing suite was built over decades: five separate applications, each developed independently, each requiring different institutional knowledge to navigate. Customer Support Representatives at Financial Institutions juggled these systems simultaneously to handle a single cardholder query.</p>
+    <p class="body-text reveal" style="margin-top: 1rem">The problem was not that the systems were broken. It was that they were never designed to work together. Every workaround a rep built was knowledge that lived in their head, not in the product.</p>
+
+    <div class="challenge-grid reveal">
+      <div class="challenge-card">
+        <div class="challenge-number">01</div>
+        <div class="challenge-title">Application sprawl</div>
+        <div class="challenge-desc">Reps toggled between Transaction Journal, Card Management, Dispute Manager, Case Tracker, and Credit Console to resolve a single call.</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-number">02</div>
+        <div class="challenge-title">Institutionalised knowledge</div>
+        <div class="challenge-desc">New staff could not function without months of shadowing. The system rewarded tenure, not good design.</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-number">03</div>
+        <div class="challenge-title">Debit and credit as separate worlds</div>
+        <div class="challenge-desc">Financial Institutions wanted a single cardholder view. The existing architecture made that structurally impossible.</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-number">04</div>
+        <div class="challenge-title">Workarounds as standard practice</div>
+        <div class="challenge-desc">Most FI clients had built their own navigation hacks to make the system workable. The product had normalised friction.</div>
+      </div>
+    </div>
+
+    <div class="role-banner reveal">
+      <div class="role-banner-inner">
+        <div>
+          <div class="role-item-label">The brief</div>
+          <div class="role-item-value">Replace Card Management and Credit Console with a single unified web portal. Bring debit and credit into one cardholder view. Design for the support rep, not the database schema.</div>
+        </div>
+        <div>
+          <div class="role-item-label">Scale of engagement</div>
+          <div class="role-item-value">80+ Globant contributors across design, engineering, QA and strategy. 24+ Financial Institutions engaged. 48+ sprints across a two-year build and delivery cycle.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 2: MY ROLE -->
+<section class="section section-blue">
+  <div class="section-inner">
+    <p class="act-label on-dark reveal">Act 02 / My Role</p>
+    <h2 class="section-heading on-dark reveal">India-side UX anchor <em>in a distributed design chain</em></h2>
+    <p class="body-text on-dark reveal">I joined the project after the discovery phase was complete. The research foundation, stakeholder interviews across 18 US states, and FI co-creation sessions were already done. My job was to translate that research into design that actually worked, and to keep the design moving.</p>
+
+    <div class="stats-grid dark reveal" style="margin-top: 2.5rem">
+      <div class="stat-cell">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Countries across the design team</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">16h</div>
+        <div class="stat-label">Daily design coverage via timezone handoffs</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Design iterations across the engagement</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Production releases shipped</div>
+      </div>
+    </div>
+
+    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0">
+
+    <p class="body-text on-dark reveal">The design team was distributed across the USA, Mexico, and India. Researchers and the Design Lead operated from the US. Two UX Designers and two Visual Designers worked from Mexico. I was the sole UX Designer from India, working alongside one Visual Designer.</p>
+    <p class="body-text on-dark reveal" style="margin-top: 1rem">This was not a team that could rely on spontaneous collaboration. We ran a deliberate handoff chain: I completed design work in Indian Standard Time, handed to the Mexico team as their day began, and they continued through to the US team's working hours. Design did not stop. The model required each person to leave work that was specific enough to continue, and documented enough to not lose context.</p>
+
+    <div class="contribution-block reveal" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); margin-top: 2rem">
+      <div class="contribution-block-title" style="color: rgba(255,255,255,0.4)">My direct contributions</div>
+      <div class="contribution-block-text" style="color: rgba(255,255,255,0.7)">Interaction design across multiple workflows. Structural definition of the dual-tab navigation model that unified debit and credit into a single cardholder view. Close coordination with the India-based development team from design handoff through to production release, remaining one of the last design team members on the engagement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 3: PROCESS -->
+<section class="section">
+  <div class="section-inner">
+    <p class="act-label reveal">Act 03 / Process</p>
+    <h2 class="section-heading reveal">From discovery output to <em>design decisions</em></h2>
+    <p class="body-text reveal">The discovery phase had produced rich research: interviews with support reps across 24 Financial Institutions, synthesis of key behavioural patterns, and a clear articulation of what the system needed to do differently. The design phase began where I joined: turning those insights into structure.</p>
+
+    <div class="process-steps reveal" style="background: var(--dark-bg)">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-title">Research inheritance</div>
+        <div class="process-step-desc">Absorbed discovery outputs: user interviews, FI feedback, pain point mapping, and behavioural patterns from 18 US states.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-title">Structural ideation</div>
+        <div class="process-step-desc">Weekly UX design calls with Fiserv stakeholders. Three competing navigation architectures explored and compared with client feedback driving direction.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-title">Workflow design</div>
+        <div class="process-step-desc">Designed interaction flows for core servicing tasks. Iterated against usability testing with FI users. 100+ design iterations across the engagement.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-title">Development coordination</div>
+        <div class="process-step-desc">Worked directly with the India engineering team through handoff, implementation, and production release. One of the last design team members on the project.</div>
+      </div>
+    </div>
+
+    <hr style="border: none; border-top: 1px solid var(--border); margin: 3rem 0">
+
+    <h3 class="reveal" style="font-family: 'Fraunces', serif; font-weight: 300; font-size: 1.4rem; margin-bottom: 1.5rem; letter-spacing: -0.01em">The navigation pivot</h3>
+    <p class="body-text reveal">The most significant structural challenge was how to unify debit and credit in a single interface. Fiserv's stakeholder feedback pushed toward a dense, information-rich layout where everything was visible upfront. User research pointed the other direction: cognitive overload was already destroying efficiency in the legacy system. Adding density was not the answer.</p>
+    <p class="body-text reveal" style="margin-top: 1rem">Three architectural approaches were formally evaluated with clients. The eventual direction retained progressive disclosure but eliminated the need to navigate to a separate detail page for primary actions. The dual-tab model assigned each card type its most relevant primary view by default: Credit defaulted to the Account tab, Debit defaulted to the Card tab. This was not aesthetic preference. It was grounded in a specific insight: credit and debit users have fundamentally different primary tasks when a cardholder calls in.</p>
+
+    <div class="screen-wrapper reveal">
+      <div class="screen-placeholder">
+        <div class="screen-placeholder-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/></svg>
+        </div>
+        <span class="screen-placeholder-label">Navigation architecture comparison: Options A, B, C</span>
+      </div>
+      <div class="screen-caption">Design exploration comparing three information architectures in response to Fiserv stakeholder feedback on density and navigation simplification.</div>
+    </div>
+
+    <div class="decision-row reveal">
+      <div>
+        <div class="decision-col-label">What Fiserv stakeholders asked for</div>
+        <div class="decision-text">A "stock trader" density model. Everything visible. No clicks to reach key data. Maximum information upfront, space filled 100%.</div>
+      </div>
+      <div>
+        <div class="decision-col-label accent">What users actually needed</div>
+        <div class="decision-text">Progressive disclosure. Hierarchy that matched task frequency. Quick access to the most critical information with deeper data one step away, not buried in scroll.</div>
+      </div>
+    </div>
+
+    <div class="contribution-block reveal">
+      <div class="contribution-block-title">Design rationale</div>
+      <div class="contribution-block-text">The dual-tab default model resolved the tension without compromising either goal. Stakeholders got a dense, data-rich overview. Users got a system where the most relevant information for their card type was immediately visible without hunting. Credit and debit were unified in one cardholder view while retaining the task-appropriate defaults each required.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 4: SOLUTION -->
+<section class="section section-blue">
+  <div class="section-inner">
+    <p class="act-label on-dark reveal">Act 04 / Solution</p>
+    <h2 class="section-heading on-dark reveal">One cardholder view. <em>Every card function.</em></h2>
+    <p class="body-text on-dark reveal">Card Console replaced five applications with a single portal. The cardholder profile persisted across every interaction. Navigation was anchored to the cardholder, not to the function being performed. Support reps could move between card management, transaction history, dispute initiation, and account modification without losing context.</p>
+
+    <div class="screen-wrapper dark reveal">
+      <div class="screen-placeholder">
+        <div class="screen-placeholder-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/></svg>
+        </div>
+        <span class="screen-placeholder-label">Card Console: Cardholder overview with dual-tab navigation</span>
+      </div>
+      <div class="screen-caption">Final production interface showing unified debit and credit cardholder view. Credit defaults to Account tab, Debit defaults to Card tab. Contextual actions surface adjacent to relevant data.</div>
+    </div>
+
+    <div class="stats-grid dark reveal">
+      <div class="stat-cell">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Legacy applications consolidated into one</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">24+</div>
+        <div class="stat-label">Financial Institutions engaged in validation</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">1500+</div>
+        <div class="stat-label">Minutes of user interviews informing design</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">48+</div>
+        <div class="stat-label">Sprints delivered across the build cycle</div>
+      </div>
+    </div>
+
+    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0">
+
+    <h3 class="reveal" style="font-family: 'Fraunces', serif; font-weight: 300; font-size: 1.4rem; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -0.01em">Key design principles that held across the engagement</h3>
+
+    <div class="principles-2col reveal">
+      <div>
+        <div class="principle-key">Progressive disclosure</div>
+        <div class="principle-val">Primary information upfront. Detail on demand. Rarely-used data never competed with the critical path for attention.</div>
+      </div>
+      <div>
+        <div class="principle-key">Contextual actions</div>
+        <div class="principle-val">Actions surfaced near the data they acted on. No hunting through menus. The interface guided without removing user control.</div>
+      </div>
+      <div>
+        <div class="principle-key">Cardholder as anchor</div>
+        <div class="principle-val">Navigation organised around the person being served, not the function being performed. The cardholder profile persisted across every interaction state.</div>
+      </div>
+      <div>
+        <div class="principle-key">Reduced training burden</div>
+        <div class="principle-val">The system was designed to be learnable without institutional knowledge. New reps could orient themselves through the interface rather than through colleague instruction.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 5: REFLECTION -->
+<section class="section">
+  <div class="section-inner">
+    <p class="act-label reveal">Act 05 / Reflection</p>
+    <h2 class="section-heading reveal">What this engagement <em>taught me</em></h2>
+    <p class="body-text reveal">Card Console was the most operationally demanding project I had worked on to that point. Two years of active delivery, a team distributed across three countries, weekly client-facing design reviews, and a development partnership that lasted through to production. The lessons were not all about UX craft.</p>
+
+    <div class="reflection-grid reveal">
+      <div class="reflection-cell">
+        <div class="reflection-cell-label">Distributed design is a discipline</div>
+        <div class="reflection-cell-text">A handoff chain only works when every person in it leaves work that is complete enough to continue and documented enough to not lose context. I learned to design for handoff as a first-class output, not an afterthought.</div>
+      </div>
+      <div class="reflection-cell">
+        <div class="reflection-cell-label">Stakeholder feedback is data, not direction</div>
+        <div class="reflection-cell-text">Fiserv's "stock trader density" request was a signal about what they valued, not a specification to execute. Reading the intent behind the request and responding with evidence from user research is where the real design work happened.</div>
+      </div>
+      <div class="reflection-cell">
+        <div class="reflection-cell-label">Joining mid-stream is a skill</div>
+        <div class="reflection-cell-text">I did not run the discovery. I inherited it. Learning to build genuine ownership of a design direction you did not originate, and to make meaningful contributions within that foundation, is a capability that most projects eventually demand.</div>
+      </div>
+      <div class="reflection-cell">
+        <div class="reflection-cell-label">Implementation proximity matters</div>
+        <div class="reflection-cell-text">Staying through to production release and working directly with the engineering team gave me a view of where design intent survived the build and where it did not. That feedback loop changed how I write specifications.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR BLOCK -->
+<div class="author-block">
+  <div class="author-inner">
+    <div class="author-avatar">PK</div>
+    <div>
+      <div class="author-name">Pankaj Khamitkar</div>
+      <div class="author-role">Tech Design Manager, Globant &middot; 12+ years enterprise UX</div>
+      <div class="author-bio">Designing for enterprise complexity across FinTech, Gaming, Healthcare, and beyond. Based in Pune. Building systems that make difficult work feel less difficult.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NEXT STRIP -->
+<div class="next-strip">
+  <div>
+    <a href="../index.html" class="back-home-link">
+      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      All Projects
+    </a>
+  </div>
+  <div>
+    <div class="next-label">Next Case Study</div>
+    <a href="gih-case-study.html" class="next-link">
+      Gaming Intelligence Hub
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Pankaj Khamitkar &bull; UX Design Leader</div>
+  <div class="footer-coords">18&#176;31'N &nbsp;73&#176;51'E &nbsp;&bull;&nbsp; Pune, India</div>
+  <div class="footer-links">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="mailto:pan.khamitkar@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

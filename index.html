@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pankaj Khamitkar &mdash; UX Design Leader</title>
+<meta name="description" content="Senior UX Design Leader with 12+ years building enterprise products across FinTech, Gaming, Healthcare, and more.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/shared.css">
+
+<style>
+/* ============================================================
+   HOMEPAGE: page-specific styles only
+   ============================================================ */
+
+/* ── NAV OVERRIDE FOR LIGHT HERO ─────────────────────────── */
+nav {
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(13, 11, 9, 0.92);
+  backdrop-filter: blur(16px);
+}
+
+.nav-logo {
+  color: var(--ink) !important;
+}
+
+.nav-logo span {
+  color: var(--accent) !important;
+}
+
+.nav-links a {
+  color: rgba(13, 11, 9, 0.55) !important;
+}
+
+.nav-links a:hover {
+  color: var(--ink) !important;
+}
+
+.nav-cta {
+  color: var(--ink) !important;
+  border-color: rgba(13, 11, 9, 0.25) !important;
+}
+
+.nav-cta:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+nav.scrolled .nav-logo { color: var(--white) !important; }
+nav.scrolled .nav-links a { color: rgba(253, 252, 251, 0.65) !important; }
+nav.scrolled .nav-links a:hover { color: var(--white) !important; }
+nav.scrolled .nav-cta { color: var(--white) !important; border-color: rgba(253,252,251,0.3) !important; }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+#hero {
+  min-height: calc(92dvh - var(--nav-h));
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: 42% 58%;
+  padding-top: var(--nav-h);
+}
+
+.hero-photo-col {
+  position: relative;
+  overflow: hidden;
+  max-height: calc(92dvh - var(--nav-h));
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.1s both;
+}
+
+.hero-photo-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  filter: saturate(0.88) contrast(1.04);
+}
+
+.hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(14,12,10,0.35) 75%,
+    rgba(14,12,10,0.72) 100%
+  );
+}
+
+.hero-photo-caption {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  right: 2rem;
+}
+
+.hero-photo-caption-line {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.hero-photo-caption-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.hero-photo-caption-role {
+  font-family: 'DM Mono', monospace;
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(253,252,251,0.6);
+}
+
+/* Right column */
+.hero-content-col {
+  display: flex;
+  max-height: calc(92dvh - var(--nav-h));
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem clamp(32px, 5vw, 80px) 4rem clamp(40px, 5vw, 72px);
+  border-left: 0.5px solid var(--border);
+}
+
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.3s forwards;
+}
+
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-name {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.45s forwards;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+  display: block;
+}
+
+.hero-descriptor {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 440px;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.55s forwards;
+}
+
+.hero-descriptor-2 {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.65s forwards;
+}
+
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 0.5px solid var(--border);
+  padding-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.85s forwards;
+}
+
+.hero-stat-cell {
+  padding-right: 1.25rem;
+  border-right: 0.5px solid var(--border);
+  margin-right: 1.25rem;
+}
+
+.hero-stat-cell:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.hero-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-num em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── DOMAIN BAND ──────────────────────────────────────────── */
+#domains {
+  background: var(--ink-soft);
+  padding: 28px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.domain-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-right: 32px;
+  border-right: 1px solid rgba(201, 76, 26, 0.3);
+  margin-right: 32px;
+  flex-shrink: 0;
+}
+
+.domain-track {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.domain-scroll {
+  display: flex;
+  gap: 48px;
+  animation: marquee 24s linear infinite;
+  width: max-content;
+}
+
+.domain-item {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.domain-item::after {
+  content: '·';
+  color: var(--accent);
+  font-size: 20px;
+}
+
+/* ── WORK ─────────────────────────────────────────────────── */
+#work { background: var(--paper); }
+
+.work-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.work-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding-bottom: 8px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px;
+}
+
+.case-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  background: var(--ink);
+}
+
+.case-card.featured {
+  grid-column: 1 / 3;
+  min-height: clamp(360px, 44vw, 600px);
+}
+
+.case-card:not(.featured) {
+  min-height: clamp(260px, 28vw, 400px);
+}
+
+.case-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.7s ease, opacity 0.4s;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.case-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.case-card:hover .case-bg {
+  transform: scale(1.04);
+  opacity: 0.85;
+}
+
+.case-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 11, 9, 0.92) 0%, rgba(13, 11, 9, 0.2) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+.case-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: clamp(28px, 4vw, 48px);
+  z-index: 2;
+}
+
+.case-domain {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-domain::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.case-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(22px, 3vw, 38px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.case-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.case-meta {
+  font-size: 13px;
+  color: rgba(253, 252, 251, 0.5);
+  font-weight: 300;
+}
+
+.case-metric {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(253, 252, 251, 0.85);
+}
+
+.case-metric span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(253, 252, 251, 0.45);
+  margin-left: 4px;
+}
+
+.case-arrow {
+  position: absolute;
+  top: clamp(20px, 3vw, 36px);
+  right: clamp(20px, 3vw, 36px);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(253, 252, 251, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.case-card:hover .case-arrow {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.case-arrow svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 1.5;
+  transition: transform 0.3s;
+}
+
+.case-card:hover .case-arrow svg {
+  transform: translate(2px, -2px);
+}
+
+
+
+/* ── EXPERTISE / CAPABILITIES ─────────────────────────────── */
+#expertise { background: var(--paper-warm); }
+
+/* Industries horizontal row */
+.domain-blocks {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 2px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-top: 48px;
+}
+
+.domain-blocks::-webkit-scrollbar { display: none; }
+
+.domain-block {
+  background: var(--paper);
+  padding: 28px 24px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+  min-width: 12vw;
+  max-width: 16vw;
+  flex-shrink: 0;
+}
+
+.domain-block:hover { border-color: var(--accent); }
+
+.domain-block-icon { font-size: 26px; margin-bottom: 14px; line-height: 1; }
+
+.domain-block-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.domain-block-detail {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ── METHODOLOGY ──────────────────────────────────────────── */
+#methodology {
+  background: var(--ink);
+  color: var(--white);
+}
+
+#methodology .section-tag { color: var(--accent); }
+#methodology .section-tag::before { background: var(--accent); }
+#methodology .section-title { color: var(--white); }
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 72px;
+}
+
+.method-card {
+  background: rgba(253, 252, 251, 0.04);
+  padding: clamp(28px, 3vw, 48px) clamp(20px, 2.5vw, 36px);
+  border-left: 1px solid rgba(253, 252, 251, 0.08);
+  transition: background 0.3s;
+}
+
+.method-card:hover { background: rgba(253, 252, 251, 0.07); }
+
+.method-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 56px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(253, 252, 251, 0.1);
+  margin-bottom: 28px;
+}
+
+.method-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.method-title em { font-style: italic; color: var(--accent); }
+
+.method-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--paper);
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+/* ── METRICS ──────────────────────────────────────────────── */
+#metrics {
+  background: var(--accent);
+  padding: clamp(60px, 8vh, 100px) var(--gutter);
+}
+
+.metrics-label {
+  font-family: 'DM Mono', monospace;
+  Font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(253, 252, 251, 0.7);
+  margin-bottom: 56px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+
+.metric-item {
+  padding: clamp(24px, 3vw, 40px) clamp(16px, 2vw, 28px);
+  border-left: 1px solid rgba(253, 252, 251, 0.2);
+}
+
+.metric-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 62px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--paper);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* ── TESTIMONIALS ─────────────────────────────────────────── */
+#testimonials {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 72px;
+}
+
+.testimonial-card {
+  background: rgba(253, 252, 251, 0.04);
+  padding: clamp(36px, 4vw, 60px) clamp(28px, 3vw, 48px);
+}
+
+.testimonial-card.primary { background: var(--accent); }
+
+.quote-mark {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 80px;
+  line-height: 0.6;
+  color: rgba(253, 252, 251, 0.15);
+  margin-bottom: 24px;
+}
+
+.testimonial-card.primary .quote-mark { color: rgba(253, 252, 251, 0.3); }
+
+.testimonial-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(253, 252, 251, 0.85);
+  margin-bottom: 36px;
+}
+
+.testimonial-card.primary .testimonial-text { color: var(--white); }
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid rgba(253, 252, 251, 0.1);
+  padding-top: 24px;
+}
+
+.testimonial-card.primary .testimonial-author { border-color: rgba(253, 252, 251, 0.25); }
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(253, 252, 251, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(253, 252, 251, 0.7);
+  flex-shrink: 0;
+}
+
+.author-name { font-weight: 400; font-size: 14px; color: var(--white); margin-bottom: 3px; }
+.author-role { font-size: 12px; color: rgba(253, 252, 251, 0.45); font-weight: 300; }
+.testimonial-card.primary .author-role { color: rgba(253, 252, 251, 0.65); }
+
+/* ── ABOUT ────────────────────────────────────────────────── */
+#about {
+  background: var(--paper);
+  padding-top: clamp(80px, 10vh, 140px);
+  padding-bottom: clamp(80px, 10vh, 140px);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: clamp(48px, 6vw, 100px);
+  align-items: start;
+  margin-top: 64px;
+}
+
+.about-text h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(28px, 3.5vw, 42px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.about-text h3 em { font-style: italic; color: var(--accent); }
+
+.about-text p {
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.about-text p strong { color: var(--ink); font-weight: 400; }
+
+.about-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.about-photo-frame {
+  position: relative;
+  background: var(--paper-warm);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  max-width: 360px;
+}
+
+.about-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+
+.about-credentials { margin-top: 24px; }
+
+.credential-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(13, 11, 9, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.cred-name { font-weight: 400; font-size: 14px; color: var(--ink); }
+.cred-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cred-year { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+/* ── CAPABILITIES MARQUEE STRIP ───────────────────────────── */
+#skills-strip {
+  background: var(--paper-warm);
+  padding: 40px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 32s linear infinite;
+  width: max-content;
+}
+
+.skills-track-inner {
+  display: flex;
+  gap: 12px;
+  padding-right: 12px;
+  align-items: center;
+}
+
+.skill-strip-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid rgba(13, 11, 9, 0.10);
+  padding: 8px 18px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.skill-strip-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── CONTACT ──────────────────────────────────────────────── */
+#contact {
+  background: var(--ink);
+  padding: clamp(80px, 12vh, 160px) var(--gutter);
+  text-align: center;
+}
+
+#contact .section-tag { justify-content: center; }
+
+.contact-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: clamp(44px, 7vw, 92px);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 36px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-headline em { font-style: italic; color: var(--accent); }
+
+.contact-sub {
+  font-size: 16px;
+  color: rgba(253, 252, 251, 0.45);
+  font-weight: 300;
+  margin-bottom: 56px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.contact-details {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(253, 252, 251, 0.3);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.contact-details a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-details a:hover { color: var(--accent); }
+
+/* ── SECTION WRAPPERS ─────────────────────────────────────── */
+.hp-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(64px, 9vh, 120px) var(--gutter);
+}
+
+#work     { padding: clamp(64px, 9vh, 120px) var(--gutter); }
+#metrics  { padding: clamp(60px, 8vh, 100px) var(--gutter); }
+#contact  { padding: clamp(80px, 12vh, 160px) var(--gutter); }
+
+.work-header,
+.work-grid {
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.work-header { margin-bottom: 48px; }
+
+.metrics-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 960px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-photo-col { min-height: 60vw; }
+  .hero-content-col { border-left: none; border-top: 0.5px solid var(--border); padding: 3rem var(--gutter); }
+  .work-grid { grid-template-columns: 1fr; }
+  .case-card.featured { grid-column: 1; }
+  .method-grid { grid-template-columns: 1fr 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-photo-frame { max-width: 100%; aspect-ratio: 4/3; }
+  .expertise-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .method-grid { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  .work-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .about-links { flex-direction: column; }
+  .contact-actions { flex-direction: column; align-items: center; }
+  .contact-details { flex-direction: column; align-items: center; gap: 12px; }
+}
+
+@media (max-width: 460px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .hero-stat-cell { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 0.5px solid var(--border); padding-bottom: 16px; margin-bottom: 16px; }
+}
+
+@media print {
+  nav, #contact, footer { display: none; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">P<span>.</span>K</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#methodology">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo-col">
+    <img src="assets/images/pankaj-photo.jpeg" alt="Pankaj Khamitkar">
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-photo-caption">
+      <div class="hero-photo-caption-line"></div>
+      <div class="hero-photo-caption-name">Pankaj Khamitkar</div>
+      <div class="hero-photo-caption-role">UX Design Leader &nbsp;·&nbsp; Pune, India</div>
+    </div>
+  </div>
+
+  <div class="hero-content-col">
+    <div class="hero-tag">UX Design Leader</div>
+    <h1 class="hero-name">
+      Pankaj
+      <em>Khamitkar</em>
+    </h1>
+    <p class="hero-descriptor">Designing intelligent digital products through strategy, systems thinking &amp; human-centered UX.</p>
+    <p class="hero-descriptor-2">Across FinTech, Gaming Analytics, eCommerce, Healthcare, and Media &mdash; turning enterprise-scale ambiguity into products people actually understand.</p>
+    
+    <div class="hero-stats">
+      <div class="hero-stat-cell">
+        <div class="hero-stat-num">12<em>+</em></div>
+        <div class="hero-stat-label">Years<br>Experience</div>
+      </div>
+      <div class="hero-stat-cell">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">Industries</div>
+      </div>
+      <div class="hero-stat-cell">
+        <div class="hero-stat-num">$20M<em>+</em></div>
+        <div class="hero-stat-label">Revenue<br>Impact</div>
+      </div>
+      <div class="hero-stat-cell">
+        <div class="hero-stat-num">AI<em>↗</em></div>
+        <div class="hero-stat-label">Augmented</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAIN BAND -->
+<div id="domains">
+  <div class="domain-label">Industries</div>
+  <div class="domain-track">
+    <div class="domain-scroll">
+      <div class="domain-item">FinTech</div>
+      <div class="domain-item">Gaming &amp; Hospitality</div>
+      <div class="domain-item">Healthcare</div>
+      <div class="domain-item">eCommerce</div>
+      <div class="domain-item">Entertainment</div>
+      <div class="domain-item">Extended Reality</div>
+      <div class="domain-item">FinTech</div>
+      <div class="domain-item">Gaming &amp; Hospitality</div>
+      <div class="domain-item">Healthcare</div>
+      <div class="domain-item">eCommerce</div>
+      <div class="domain-item">Entertainment</div>
+      <div class="domain-item">Extended Reality</div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header reveal">
+    <div>
+      <div class="section-tag">Selected Work</div>
+      <h2 class="section-title">Projects that <em>moved the needle</em></h2>
+    </div>
+    <div class="work-count">04 case studies</div>
+  </div>
+
+  <div class="work-grid">
+
+    <!-- CARD 1: GIH / Endeavour - Slot machine + analytics -->
+    <a href="work/gih-case-study.html" class="case-card featured reveal">
+      <div class="case-bg">
+        <svg width="100%" height="100%" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_964_2)">
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint0_linear_964_2)"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint1_linear_964_2)"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint2_linear_964_2)"></path>
+<path d="M1264.26 88.6353H936.265C927.428 88.6353 920.265 95.7987 920.265 104.635V592.635C920.265 601.472 927.428 608.635 936.265 608.635H1264.26C1273.1 608.635 1280.26 601.472 1280.26 592.635V104.635C1280.26 95.7987 1273.1 88.6353 1264.26 88.6353Z" fill="url(#paint3_linear_964_2)" stroke="#C9391A" stroke-opacity="0.3" stroke-width="1.4"></path>
+<path d="M1223.26 102.635H977.265C972.294 102.635 968.265 106.665 968.265 111.635C968.265 116.606 972.294 120.635 977.265 120.635H1223.26C1228.24 120.635 1232.26 116.606 1232.26 111.635C1232.26 106.665 1228.24 102.635 1223.26 102.635Z" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M990.265 117.135C993.302 117.135 995.765 114.673 995.765 111.635C995.765 108.598 993.302 106.135 990.265 106.135C987.227 106.135 984.765 108.598 984.765 111.635C984.765 114.673 987.227 117.135 990.265 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1015.26 117.135C1018.3 117.135 1020.76 114.673 1020.76 111.635C1020.76 108.598 1018.3 106.135 1015.26 106.135C1012.23 106.135 1009.76 108.598 1009.76 111.635C1009.76 114.673 1012.23 117.135 1015.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1040.26 117.135C1043.3 117.135 1045.76 114.673 1045.76 111.635C1045.76 108.598 1043.3 106.135 1040.26 106.135C1037.23 106.135 1034.76 108.598 1034.76 111.635C1034.76 114.673 1037.23 117.135 1040.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1065.26 117.135C1068.3 117.135 1070.76 114.673 1070.76 111.635C1070.76 108.598 1068.3 106.135 1065.26 106.135C1062.23 106.135 1059.76 108.598 1059.76 111.635C1059.76 114.673 1062.23 117.135 1065.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1090.26 117.135C1093.3 117.135 1095.76 114.673 1095.76 111.635C1095.76 108.598 1093.3 106.135 1090.26 106.135C1087.23 106.135 1084.76 108.598 1084.76 111.635C1084.76 114.673 1087.23 117.135 1090.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1115.26 117.135C1118.3 117.135 1120.76 114.673 1120.76 111.635C1120.76 108.598 1118.3 106.135 1115.26 106.135C1112.23 106.135 1109.76 108.598 1109.76 111.635C1109.76 114.673 1112.23 117.135 1115.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1140.26 117.135C1143.3 117.135 1145.76 114.673 1145.76 111.635C1145.76 108.598 1143.3 106.135 1140.26 106.135C1137.23 106.135 1134.76 108.598 1134.76 111.635C1134.76 114.673 1137.23 117.135 1140.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1165.26 117.135C1168.3 117.135 1170.76 114.673 1170.76 111.635C1170.76 108.598 1168.3 106.135 1165.26 106.135C1162.23 106.135 1159.76 108.598 1159.76 111.635C1159.76 114.673 1162.23 117.135 1165.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1190.26 117.135C1193.3 117.135 1195.76 114.673 1195.76 111.635C1195.76 108.598 1193.3 106.135 1190.26 106.135C1187.23 106.135 1184.76 108.598 1184.76 111.635C1184.76 114.673 1187.23 117.135 1190.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1215.26 117.135C1218.3 117.135 1220.76 114.673 1220.76 111.635C1220.76 108.598 1218.3 106.135 1215.26 106.135C1212.23 106.135 1209.76 108.598 1209.76 111.635C1209.76 114.673 1212.23 117.135 1215.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1076.26 146.635H954.265C952.056 146.635 950.265 148.426 950.265 150.635V170.635C950.265 172.844 952.056 174.635 954.265 174.635H1076.26C1078.47 174.635 1080.26 172.844 1080.26 170.635V150.635C1080.26 148.426 1078.47 146.635 1076.26 146.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#C9391A" stroke-opacity="0.24" stroke-width="0.7"></path>
+<path d="M1246.26 146.635H1124.26C1122.06 146.635 1120.26 148.426 1120.26 150.635V170.635C1120.26 172.844 1122.06 174.635 1124.26 174.635H1246.26C1248.47 174.635 1250.26 172.844 1250.26 170.635V150.635C1250.26 148.426 1248.47 146.635 1246.26 146.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#3B5240" stroke-opacity="0.24" stroke-width="0.7"></path>
+<path d="M1042.26 156.635H966.265C965.16 156.635 964.265 157.531 964.265 158.635V162.635C964.265 163.74 965.16 164.635 966.265 164.635H1042.26C1043.37 164.635 1044.26 163.74 1044.26 162.635V158.635C1044.26 157.531 1043.37 156.635 1042.26 156.635Z" fill="#C9391A" fill-opacity="0.32"></path>
+<path d="M1212.26 156.635H1136.26C1135.16 156.635 1134.26 157.531 1134.26 158.635V162.635C1134.26 163.74 1135.16 164.635 1136.26 164.635H1212.26C1213.37 164.635 1214.26 163.74 1214.26 162.635V158.635C1214.26 157.531 1213.37 156.635 1212.26 156.635Z" fill="#3B5240" fill-opacity="0.32"></path>
+<path d="M1254.26 186.635H956.265C952.951 186.635 950.265 189.322 950.265 192.635V398.635C950.265 401.949 952.951 404.635 956.265 404.635H1254.26C1257.58 404.635 1260.26 401.949 1260.26 398.635V192.635C1260.26 189.322 1257.58 186.635 1254.26 186.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1053.26 186.635V404.635" stroke="#C9391A" stroke-opacity="0.22"></path>
+<path d="M1156.26 186.635V404.635" stroke="#C9391A" stroke-opacity="0.22"></path>
+<path d="M1260.26 231.635H950.265V340.635H1260.26V271.635Z" fill="#C9391A" fill-opacity="0.06"></path>
+<path d="M950.265 231.635H1260.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M950.265 340.635H1260.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M1001.26 323.635C1015.62 323.635 1027.26 311.995 1027.26 297.635C1027.26 283.276 1015.62 271.635 1001.26 271.635C986.905 271.635 975.265 283.276 975.265 297.635C975.265 311.995 986.905 323.635 1001.26 323.635Z" stroke="#C9391A" stroke-opacity="0.38" stroke-width="1.5"></path>
+<path d="M1001.26 312.635C1009.55 312.635 1016.26 305.92 1016.26 297.635C1016.26 289.351 1009.55 282.635 1001.26 282.635C992.98 282.635 986.265 289.351 986.265 297.635C986.265 305.92 992.98 312.635 1001.26 312.635Z" fill="#C9391A" fill-opacity="0.16"></path>
+<path d="M1001.26 271.635C1007.26 258.969 1016.93 251.302 1030.26 248.635" stroke="#C9391A" stroke-opacity="0.32" stroke-width="1.3" stroke-linecap="round"></path>
+<path d="M1001.26 271.635C995.264 258.969 1004.93 251.302 1030.26 248.635" stroke="#C9391A" stroke-opacity="0.32" stroke-width="1.3" stroke-linecap="round"></path>
+<path d="M1030.26 259.635C1037.44 259.635 1043.26 253.815 1043.26 246.635C1043.26 239.456 1037.44 233.635 1030.26 233.635C1023.08 233.635 1017.26 239.456 1017.26 246.635C1017.26 253.815 1023.08 259.635 1030.26 259.635Z" stroke="#C9391A" stroke-opacity="0.28" stroke-width="1.1"></path>
+<path d="M1135.26 256.635H1073.26C1071.61 256.635 1070.26 257.978 1070.26 259.635V269.635C1070.26 271.292 1071.61 272.635 1073.26 272.635H1135.26C1136.92 272.635 1138.26 271.292 1138.26 269.635V259.635C1138.26 257.978 1136.92 256.635 1135.26 256.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1135.26 278.635H1073.26C1071.61 278.635 1070.26 279.978 1070.26 281.635V291.635C1070.26 293.292 1071.61 294.635 1073.26 294.635H1135.26C1136.92 294.635 1138.26 293.292 1138.26 291.635V281.635C1138.26 279.978 1136.92 278.635 1135.26 278.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1135.26 300.635H1073.26C1071.61 300.635 1070.26 301.978 1070.26 303.635V313.635C1070.26 315.292 1071.61 316.635 1073.26 316.635H1135.26C1136.92 316.635 1138.26 315.292 1138.26 313.635V303.635C1138.26 301.978 1136.92 300.635 1135.26 300.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1126.26 260.635H1080.26C1079.16 260.635 1078.26 261.531 1078.26 262.635V266.635C1078.26 267.74 1079.16 268.635 1080.26 268.635H1126.26C1127.37 268.635 1128.26 267.74 1128.26 266.635V262.635C1128.26 261.531 1127.37 260.635 1126.26 260.635Z" fill="#C9391A" fill-opacity="0.2"></path>
+<path d="M1172.26 244.635H1222.26L1194.26 326.635" stroke="#C9391A" stroke-opacity="0.38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M1176.26 264.635H1218.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="1.1"></path>
+<path d="M1009.26 422.635H977.265C967.876 422.635 960.265 430.246 960.265 439.635C960.265 449.024 967.876 456.635 977.265 456.635H1009.26C1018.65 456.635 1026.26 449.024 1026.26 439.635C1026.26 430.246 1018.65 422.635 1009.26 422.635Z" stroke="#C9391A" stroke-opacity="0.26"></path>
+<path d="M1149.26 422.635H1051.26C1041.88 422.635 1034.26 430.246 1034.26 439.635C1034.26 449.024 1041.88 456.635 1051.26 456.635H1149.26C1158.65 456.635 1166.26 449.024 1166.26 439.635C1166.26 430.246 1158.65 422.635 1149.26 422.635Z" fill="#C9391A" fill-opacity="0.14" stroke="#C9391A" stroke-opacity="0.36"></path>
+<path d="M1223.26 422.635H1191.26C1181.88 422.635 1174.26 430.246 1174.26 439.635C1174.26 449.024 1181.88 456.635 1191.26 456.635H1223.26C1232.65 456.635 1240.26 449.024 1240.26 439.635C1240.26 430.246 1232.65 422.635 1223.26 422.635Z" stroke="#C9391A" stroke-opacity="0.26"></path>
+<path d="M1208.26 472.635H992.265C984.533 472.635 978.265 478.903 978.265 486.635C978.265 494.367 984.533 500.635 992.265 500.635H1208.26C1216 500.635 1222.26 494.367 1222.26 486.635C1222.26 478.903 1216 472.635 1208.26 472.635Z" stroke="#C9391A" stroke-opacity="0.2"></path>
+<path d="M992.265 486.635H1210.26" stroke="#C9391A" stroke-opacity="0.12" stroke-width="0.4"></path>
+<path d="M1280.26 196.635V348.635" stroke="#C9391A" stroke-opacity="0.24" stroke-width="2.8"></path>
+<path d="M1280.26 202.635C1292.41 202.635 1302.26 192.786 1302.26 180.635C1302.26 168.485 1292.41 158.635 1280.26 158.635C1268.11 158.635 1258.26 168.485 1258.26 180.635C1258.26 192.786 1268.11 202.635 1280.26 202.635Z" stroke="#C9391A" stroke-opacity="0.26" stroke-width="1.4"></path>
+<path d="M1280.26 191.635C1286.34 191.635 1291.26 186.71 1291.26 180.635C1291.26 174.56 1286.34 169.635 1280.26 169.635C1274.19 169.635 1269.26 174.56 1269.26 180.635C1269.26 186.71 1274.19 191.635 1280.26 191.635Z" fill="#C9391A" fill-opacity="0.16"></path>
+<path d="M970.265 608.635L950.265 656.635" stroke="#C9391A" stroke-opacity="0.15" stroke-width="1.5"></path>
+<path d="M1230.26 608.635L1250.26 656.635" stroke="#C9391A" stroke-opacity="0.15" stroke-width="1.5"></path>
+<path d="M946.265 656.635H1254.26" stroke="#C9391A" stroke-opacity="0.12" stroke-width="0.8"></path>
+<path d="M259 284L287 324L259 364L231 324L259 284Z" stroke="#C9391A" stroke-opacity="0.2" stroke-width="1.1"></path>
+<path d="M259 298L275 324L259 350L243 324L259 298Z" fill="#C9391A" fill-opacity="0.07"></path>
+<path d="M460 110C476.569 110 490 96.5685 490 80C490 63.4315 476.569 50 460 50C443.431 50 430 63.4315 430 80C430 96.5685 443.431 110 460 110Z" stroke="#C9391A" stroke-opacity="0.18" stroke-width="0.8"></path>
+<path d="M460 96C468.837 96 476 88.8366 476 80C476 71.1634 468.837 64 460 64C451.163 64 444 71.1634 444 80C444 88.8366 451.163 96 460 96Z" stroke="#C9391A" stroke-opacity="0.14" stroke-width="0.7"></path>
+<path d="M530 130C542.703 130 553 119.703 553 107C553 94.2975 542.703 84 530 84C517.297 84 507 94.2975 507 107C507 119.703 517.297 130 530 130Z" stroke="#C9391A" stroke-opacity="0.14" stroke-width="0.6"></path>
+<path d="M336.706 338.882C338.219 338.882 339.446 337.655 339.446 336.142C339.446 334.629 338.219 333.402 336.706 333.402C335.193 333.402 333.966 334.629 333.966 336.142C333.966 337.655 335.193 338.882 336.706 338.882Z" stroke="#3B5240" stroke-opacity="0.28" stroke-width="0.487059"></path>
+<path d="M458.471 343.753C459.984 343.753 461.211 342.527 461.211 341.014C461.211 339.5 459.984 338.274 458.471 338.274C456.958 338.274 455.731 339.5 455.731 341.014C455.731 342.527 456.958 343.753 458.471 343.753Z" stroke="#3B5240" stroke-opacity="0.26" stroke-width="0.487059"></path>
+<path d="M580.235 338.882C581.748 338.882 582.975 337.655 582.975 336.142C582.975 334.629 581.748 333.402 580.235 333.402C578.722 333.402 577.495 334.629 577.495 336.142C577.495 337.655 578.722 338.882 580.235 338.882Z" stroke="#3B5240" stroke-opacity="0.24" stroke-width="0.487059"></path>
+<path d="M641.117 332.185C644.816 332.185 647.815 329.187 647.815 325.488C647.815 321.79 644.816 318.791 641.117 318.791C637.419 318.791 634.42 321.79 634.42 325.488C634.42 329.187 637.419 332.185 641.117 332.185Z" stroke="#C9391A" stroke-opacity="0.2" stroke-width="0.487059"></path>
+<path d="M336.706 338.882L397.588 323.662" stroke="#3B5240" stroke-opacity="0.17" stroke-width="0.365294"></path>
+<path d="M397.588 323.662L458.471 343.753" stroke="#C9391A" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M458.471 343.753L519.353 327.924" stroke="#3B5240" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M519.353 327.924L580.235 338.882" stroke="#C9391A" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M580.235 338.882L641.118 325.488" stroke="#3B5240" stroke-opacity="0.15" stroke-width="0.365294"></path>
+<path d="M397.588 326.402C399.101 326.402 400.328 325.175 400.328 323.662C400.328 322.149 399.101 320.922 397.588 320.922C396.075 320.922 394.849 322.149 394.849 323.662C394.849 325.175 396.075 326.402 397.588 326.402Z" fill="#C9391A" fill-opacity="0.45"></path>
+<path d="M519.353 330.663C520.866 330.663 522.093 329.437 522.093 327.924C522.093 326.41 520.866 325.184 519.353 325.184C517.84 325.184 516.613 326.41 516.613 327.924C516.613 329.437 517.84 330.663 519.353 330.663Z" fill="#C9391A" fill-opacity="0.4"></path>
+<path d="M641.118 327.924C642.463 327.924 643.553 326.833 643.553 325.488C643.553 324.143 642.463 323.053 641.118 323.053C639.773 323.053 638.683 324.143 638.683 325.488C638.683 326.833 639.773 327.924 641.118 327.924Z" fill="#3B5240" fill-opacity="0.5"></path>
+<path d="M323.312 320.618H295.306C294.634 320.618 294.088 321.163 294.088 321.835V349.841C294.088 350.514 294.634 351.059 295.306 351.059H323.312C323.984 351.059 324.53 350.514 324.53 349.841V321.835C324.53 321.163 323.984 320.618 323.312 320.618Z" stroke="#3B5240" stroke-opacity="0.14" stroke-width="0.243529"></path>
+<path d="M301.394 329.75C302.403 329.75 303.22 328.932 303.22 327.924C303.22 326.915 302.403 326.097 301.394 326.097C300.385 326.097 299.567 326.915 299.567 327.924C299.567 328.932 300.385 329.75 301.394 329.75Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M309.918 329.75C310.927 329.75 311.744 328.932 311.744 327.924C311.744 326.915 310.927 326.097 309.918 326.097C308.909 326.097 308.091 326.915 308.091 327.924C308.091 328.932 308.909 329.75 309.918 329.75Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M301.394 337.056C302.403 337.056 303.22 336.238 303.22 335.229C303.22 334.221 302.403 333.403 301.394 333.403C300.385 333.403 299.567 334.221 299.567 335.229C299.567 336.238 300.385 337.056 301.394 337.056Z" fill="#C9391A" fill-opacity="0.24"></path>
+<path d="M309.918 337.056C310.927 337.056 311.744 336.238 311.744 335.229C311.744 334.221 310.927 333.403 309.918 333.403C308.909 333.403 308.091 334.221 308.091 335.229C308.091 336.238 308.909 337.056 309.918 337.056Z" fill="#C9391A" fill-opacity="0.24"></path>
+<path d="M301.394 344.362C302.403 344.362 303.22 343.544 303.22 342.535C303.22 341.527 302.403 340.709 301.394 340.709C300.385 340.709 299.567 341.527 299.567 342.535C299.567 343.544 300.385 344.362 301.394 344.362Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M309.918 344.362C310.927 344.362 311.744 343.544 311.744 342.535C311.744 341.527 310.927 340.709 309.918 340.709C308.909 340.709 308.091 341.527 308.091 342.535C308.091 343.544 308.909 344.362 309.918 344.362Z" fill="#C9391A" fill-opacity="0.18"></path>
+<path d="M318.441 329.75C319.45 329.75 320.268 328.932 320.268 327.924C320.268 326.915 319.45 326.097 318.441 326.097C317.432 326.097 316.615 326.915 316.615 327.924C316.615 328.932 317.432 329.75 318.441 329.75Z" fill="#3B5240" fill-opacity="0.35"></path>
+<path d="M318.441 337.056C319.45 337.056 320.268 336.238 320.268 335.229C320.268 334.221 319.45 333.403 318.441 333.403C317.432 333.403 316.615 334.221 316.615 335.229C316.615 336.238 317.432 337.056 318.441 337.056Z" fill="#3B5240" fill-opacity="0.35"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint4_linear_964_2)"></path>
+</g>
+<defs>
+<linearGradient id="paint0_linear_964_2" x1="0" y1="0" x2="576" y2="1152" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1A0E08"></stop>
+<stop offset="0.38" stop-color="#2C1006"></stop>
+<stop offset="0.68" stop-color="#0F1A10"></stop>
+<stop offset="1" stop-color="#0A1208"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_964_2" x1="1254.5" y1="532.5" x2="337.162" y2="791.89" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C9391A" stop-opacity="0.55"></stop>
+<stop offset="1" stop-color="#C9391A" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_964_2" x1="269" y1="123.5" x2="1111.32" y2="-37.3813" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B5240" stop-opacity="0.48"></stop>
+<stop offset="1" stop-color="#3B5240" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint3_linear_964_2" x1="920.265" y1="88.6353" x2="1280.26" y2="88.6353" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C9391A" stop-opacity="0.05"></stop>
+<stop offset="0.5" stop-color="#C9391A" stop-opacity="0.11"></stop>
+<stop offset="1" stop-color="#C9391A" stop-opacity="0.03"></stop>
+</linearGradient>
+<linearGradient id="paint4_linear_964_2" x1="0" y1="0" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+<stop stop-color="#100A06" stop-opacity="0.2"></stop>
+<stop offset="0.55" stop-color="#100A06" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#100A06" stop-opacity="0.88"></stop>
+</linearGradient>
+<clipPath id="clip0_964_2">
+<rect width="1440" height="720" fill="white"></rect>
+</clipPath>
+</defs>
+    </svg>
+      </div>
+      <div class="case-arrow">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="case-content">
+        <div class="case-domain">Gaming &amp; Hospitality &nbsp;&bull;&nbsp; Endeavour Group, Australia</div>
+        <h3 class="case-title">Gaming Intelligence Hub:<br>Turning Data into $20M Revenue</h3>
+        <div class="case-meta-row">
+          <div class="case-meta">CX Lead &amp; Strategist &nbsp;&bull;&nbsp; 2023&ndash;2025</div>
+          <div class="case-metric">95% <span>recommendation acceptance</span></div>
+          <div class="case-metric">200+ <span>weekly decisions supported</span></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 2: Fiserv - Credit card, multi-tab dashboard, transaction flows -->
+    <a href="work/fiserv-case-study.html" class="case-card reveal reveal-delay-1">
+      <div class="case-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="fis-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A1410"/><stop offset="45%" stop-color="#0D1E18"/><stop offset="100%" stop-color="#071210"/></linearGradient>
+            <linearGradient id="fis-g1" x1="65%" y1="30%" x2="20%" y2="80%"><stop offset="0%" stop-color="#3B5240" stop-opacity="0.55"/><stop offset="100%" stop-color="#3B5240" stop-opacity="0"/></linearGradient>
+            <linearGradient id="fis-g2" x1="10%" y1="70%" x2="70%" y2="20%"><stop offset="0%" stop-color="#1A3A50" stop-opacity="0.45"/><stop offset="100%" stop-color="#1A3A50" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#fis-bg)"/>
+          <rect width="600" height="400" fill="url(#fis-g1)"/>
+          <rect width="600" height="400" fill="url(#fis-g2)"/>
+          <!-- CREDIT CARD - large, tilted, left -->
+          <g transform="rotate(-12, 160, 200)">
+            <rect x="30" y="100" width="260" height="160" rx="14" fill="none" stroke="#3B5240" stroke-width="1.4" stroke-opacity="0.4"/>
+            <rect x="30" y="100" width="260" height="160" rx="14" fill="#3B5240" fill-opacity="0.07"/>
+            <!-- Card chip -->
+            <rect x="58" y="148" width="40" height="30" rx="4" fill="none" stroke="#3B5240" stroke-width="1" stroke-opacity="0.35"/>
+            <line x1="58" y1="163" x2="98" y2="163" stroke="#3B5240" stroke-width="0.6" stroke-opacity="0.28"/>
+            <line x1="78" y1="148" x2="78" y2="178" stroke="#3B5240" stroke-width="0.6" stroke-opacity="0.28"/>
+            <!-- Card number dots -->
+            <circle cx="120" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="130" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="140" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="150" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/>
+            <circle cx="170" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="180" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="190" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/><circle cx="200" cy="195" r="3" fill="#3B5240" fill-opacity="0.35"/>
+            <rect x="218" y="190" width="48" height="6" rx="2" fill="#3B5240" fill-opacity="0.25"/>
+            <!-- Contactless symbol -->
+            <path d="M248 130 Q258 140 248 150" fill="none" stroke="#3B5240" stroke-width="1" stroke-opacity="0.3" stroke-linecap="round"/>
+            <path d="M254 124 Q268 140 254 156" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.22" stroke-linecap="round"/>
+            <!-- Brand circles -->
+            <circle cx="248" cy="218" r="14" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.3"/>
+            <circle cx="264" cy="218" r="14" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.22"/>
+          </g>
+          <!-- Second card behind, offset -->
+          <g transform="rotate(-6, 160, 200)">
+            <rect x="44" y="116" width="260" height="160" rx="14" fill="none" stroke="#1A3A50" stroke-width="1" stroke-opacity="0.28"/>
+          </g>
+          <!-- MULTI-TAB DASHBOARD - right -->
+          <rect x="310" y="30" width="278" height="220" rx="5" fill="none" stroke="#3B5240" stroke-width="0.9" stroke-opacity="0.32"/>
+          <rect x="310" y="30" width="278" height="32" rx="5" fill="#3B5240" fill-opacity="0.12"/>
+          <!-- Tabs -->
+          <rect x="320" y="38" width="60" height="18" rx="2" fill="#3B5240" fill-opacity="0.3"/>
+          <rect x="386" y="38" width="60" height="18" rx="2" fill="none" stroke="#3B5240" stroke-width="0.5" stroke-opacity="0.2"/>
+          <rect x="452" y="38" width="60" height="18" rx="2" fill="none" stroke="#3B5240" stroke-width="0.5" stroke-opacity="0.2"/>
+          <line x1="310" y1="62" x2="588" y2="62" stroke="#3B5240" stroke-width="0.4" stroke-opacity="0.22"/>
+          <!-- Left sidebar nav -->
+          <line x1="352" y1="62" x2="352" y2="250" stroke="#3B5240" stroke-width="0.4" stroke-opacity="0.2"/>
+          <rect x="318" y="72" width="26" height="7" rx="2" fill="#3B5240" fill-opacity="0.3"/>
+          <rect x="318" y="85" width="26" height="7" rx="2" fill="#3B5240" fill-opacity="0.2"/>
+          <rect x="318" y="98" width="26" height="7" rx="2" fill="#3B5240" fill-opacity="0.2"/>
+          <rect x="318" y="111" width="26" height="7" rx="2" fill="#1A3A50" fill-opacity="0.5"/>
+          <rect x="318" y="124" width="26" height="7" rx="2" fill="#3B5240" fill-opacity="0.2"/>
+          <!-- Content area: transaction rows -->
+          <rect x="362" y="72" width="214" height="14" rx="2" fill="#3B5240" fill-opacity="0.15"/>
+          <line x1="362" y1="94" x2="576" y2="94" stroke="#3B5240" stroke-width="0.4" stroke-opacity="0.16"/>
+          <rect x="362" y="100" width="100" height="8" rx="1" fill="#3B5240" fill-opacity="0.18"/><rect x="520" y="100" width="56" height="8" rx="1" fill="#3B5240" fill-opacity="0.25"/>
+          <rect x="362" y="114" width="80" height="8" rx="1" fill="#3B5240" fill-opacity="0.14"/><rect x="520" y="114" width="56" height="8" rx="1" fill="#3B5240" fill-opacity="0.2"/>
+          <rect x="362" y="128" width="120" height="8" rx="1" fill="#3B5240" fill-opacity="0.18"/><rect x="520" y="128" width="56" height="8" rx="1" fill="#1A3A50" fill-opacity="0.5"/>
+          <rect x="362" y="142" width="90" height="8" rx="1" fill="#3B5240" fill-opacity="0.14"/><rect x="520" y="142" width="56" height="8" rx="1" fill="#3B5240" fill-opacity="0.2"/>
+          <line x1="362" y1="158" x2="576" y2="158" stroke="#3B5240" stroke-width="0.4" stroke-opacity="0.16"/>
+          <rect x="362" y="164" width="110" height="8" rx="1" fill="#3B5240" fill-opacity="0.18"/><rect x="520" y="164" width="56" height="8" rx="1" fill="#3B5240" fill-opacity="0.25"/>
+          <rect x="362" y="178" width="76" height="8" rx="1" fill="#3B5240" fill-opacity="0.14"/><rect x="520" y="178" width="56" height="8" rx="1" fill="#3B5240" fill-opacity="0.2"/>
+          <!-- WORKFLOW ARROWS - bottom -->
+          <circle cx="50" cy="330" r="20" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.28"/>
+          <rect x="36" y="324" width="28" height="12" rx="2" fill="#3B5240" fill-opacity="0.14"/>
+          <line x1="70" y1="330" x2="118" y2="330" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25"/>
+          <path d="M112 324 L118 330 L112 336" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="330" r="20" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.28"/>
+          <rect x="126" y="324" width="28" height="12" rx="2" fill="#1A3A50" fill-opacity="0.4"/>
+          <line x1="160" y1="330" x2="208" y2="330" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25"/>
+          <path d="M202 324 L208 330 L202 336" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="230" cy="330" r="20" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.28"/>
+          <rect x="216" y="324" width="28" height="12" rx="2" fill="#3B5240" fill-opacity="0.14"/>
+          <line x1="250" y1="330" x2="298" y2="330" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25"/>
+          <path d="M292 324 L298 330 L292 336" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="320" cy="330" r="20" fill="none" stroke="#3B5240" stroke-width="0.8" stroke-opacity="0.28"/>
+          <circle cx="320" cy="330" r="8" fill="#3B5240" fill-opacity="0.2"/>
+          <!-- Scatter dots - platform indicators -->
+          <circle cx="420" cy="310" r="5" fill="#3B5240" fill-opacity="0.3"/><circle cx="450" cy="318" r="4" fill="#3B5240" fill-opacity="0.22"/><circle cx="480" cy="306" r="6" fill="#1A3A50" fill-opacity="0.4"/><circle cx="514" cy="316" r="4" fill="#3B5240" fill-opacity="0.25"/><circle cx="545" cy="308" r="5" fill="#3B5240" fill-opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="case-arrow">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="case-content">
+        <div class="case-domain">FinTech &nbsp;&bull;&nbsp; Fiserv, United States</div>
+        <h3 class="case-title">Unifying a Multi-Platform Servicing Experience</h3>
+        <div class="case-meta-row">
+          <div class="case-meta">Senior UX Designer &nbsp;&bull;&nbsp; 2020&ndash;2022</div>
+          <div class="case-metric">Enterprise-scale <span>multi-user platform</span></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 3: VOX Cinemas - Cinema screen arc, seat rows, film reel, popcorn -->
+    <a href="#" class="case-card reveal reveal-delay-2">
+      <div class="case-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="vox-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A0C14"/><stop offset="40%" stop-color="#0E1020"/><stop offset="100%" stop-color="#080A18"/></linearGradient>
+            <linearGradient id="vox-g1" x1="35%" y1="40%" x2="80%" y2="80%"><stop offset="0%" stop-color="#4A5090" stop-opacity="0.5"/><stop offset="100%" stop-color="#4A5090" stop-opacity="0"/></linearGradient>
+            <linearGradient id="vox-g2" x1="80%" y1="20%" x2="20%" y2="70%"><stop offset="0%" stop-color="#6050A0" stop-opacity="0.4"/><stop offset="100%" stop-color="#6050A0" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#vox-bg)"/>
+          <rect width="600" height="400" fill="url(#vox-g1)"/>
+          <rect width="600" height="400" fill="url(#vox-g2)"/>
+          <!-- CINEMA SCREEN - large curved arc -->
+          <path d="M20 160 Q300 60 580 160" fill="none" stroke="#6050A0" stroke-width="2" stroke-opacity="0.35"/>
+          <path d="M30 168 Q300 72 570 168" fill="none" stroke="#6050A0" stroke-width="0.6" stroke-opacity="0.18"/>
+          <!-- Screen glow area -->
+          <path d="M20 160 Q300 60 580 160 L580 220 Q300 130 20 220 Z" fill="#4A5090" fill-opacity="0.07"/>
+          <!-- Screen content lines - abstract film frame -->
+          <rect x="120" y="100" width="360" height="100" rx="2" fill="none" stroke="#6050A0" stroke-width="0.6" stroke-opacity="0.18"/>
+          <rect x="140" y="108" width="100" height="10" rx="1" fill="#6050A0" fill-opacity="0.2"/>
+          <rect x="140" y="122" width="140" height="7" rx="1" fill="#6050A0" fill-opacity="0.14"/>
+          <rect x="140" y="133" width="80" height="7" rx="1" fill="#6050A0" fill-opacity="0.14"/>
+          <!-- Arabic text abstract lines - bilingual hint -->
+          <rect x="340" y="108" width="100" height="10" rx="1" fill="#6050A0" fill-opacity="0.16"/>
+          <rect x="360" y="122" width="80" height="7" rx="1" fill="#6050A0" fill-opacity="0.12"/>
+          <!-- SEAT ROWS - perspective grid -->
+          <g stroke="#4A5090" stroke-width="0.7" stroke-opacity="0.22">
+            <rect x="60" y="245" width="16" height="22" rx="3" fill="none"/><rect x="82" y="245" width="16" height="22" rx="3" fill="none"/><rect x="104" y="245" width="16" height="22" rx="3" fill="none"/><rect x="126" y="245" width="16" height="22" rx="3" fill="none"/><rect x="148" y="245" width="16" height="22" rx="3" fill="none"/><rect x="170" y="245" width="16" height="22" rx="3" fill="none"/>
+            <rect x="200" y="245" width="16" height="22" rx="3" fill="none"/><rect x="222" y="245" width="16" height="22" rx="3" fill="none"/><rect x="244" y="245" width="16" height="22" rx="3" fill="none"/><rect x="266" y="245" width="16" height="22" rx="3" fill="none"/><rect x="288" y="245" width="16" height="22" rx="3" fill="none"/>
+            <rect x="318" y="245" width="16" height="22" rx="3" fill="none"/><rect x="340" y="245" width="16" height="22" rx="3" fill="#6050A0" fill-opacity="0.2"/><rect x="362" y="245" width="16" height="22" rx="3" fill="#6050A0" fill-opacity="0.2"/><rect x="384" y="245" width="16" height="22" rx="3" fill="none"/><rect x="406" y="245" width="16" height="22" rx="3" fill="none"/>
+            <rect x="436" y="245" width="16" height="22" rx="3" fill="none"/><rect x="458" y="245" width="16" height="22" rx="3" fill="none"/><rect x="480" y="245" width="16" height="22" rx="3" fill="none"/><rect x="502" y="245" width="16" height="22" rx="3" fill="none"/><rect x="524" y="245" width="16" height="22" rx="3" fill="none"/>
+            <!-- Row 2 smaller -->
+            <rect x="80" y="272" width="13" height="18" rx="2" fill="none"/><rect x="99" y="272" width="13" height="18" rx="2" fill="none"/><rect x="118" y="272" width="13" height="18" rx="2" fill="none"/><rect x="137" y="272" width="13" height="18" rx="2" fill="none"/><rect x="156" y="272" width="13" height="18" rx="2" fill="none"/>
+            <rect x="190" y="272" width="13" height="18" rx="2" fill="none"/><rect x="209" y="272" width="13" height="18" rx="2" fill="none"/><rect x="228" y="272" width="13" height="18" rx="2" fill="none"/><rect x="247" y="272" width="13" height="18" rx="2" fill="none"/><rect x="266" y="272" width="13" height="18" rx="2" fill="none"/><rect x="285" y="272" width="13" height="18" rx="2" fill="none"/>
+            <rect x="310" y="272" width="13" height="18" rx="2" fill="none"/><rect x="329" y="272" width="13" height="18" rx="2" fill="none"/><rect x="348" y="272" width="13" height="18" rx="2" fill="#6050A0" fill-opacity="0.18"/><rect x="367" y="272" width="13" height="18" rx="2" fill="none"/>
+          </g>
+          <!-- FILM REEL - right side -->
+          <circle cx="510" cy="130" r="72" fill="none" stroke="#4A5090" stroke-width="1.2" stroke-opacity="0.28"/>
+          <circle cx="510" cy="130" r="20" fill="none" stroke="#4A5090" stroke-width="1" stroke-opacity="0.3"/>
+          <circle cx="510" cy="130" r="6" fill="#4A5090" fill-opacity="0.3"/>
+          <!-- Reel spokes -->
+          <line x1="510" y1="58" x2="510" y2="202" stroke="#4A5090" stroke-width="0.7" stroke-opacity="0.22"/>
+          <line x1="438" y1="89" x2="582" y2="171" stroke="#4A5090" stroke-width="0.7" stroke-opacity="0.22"/>
+          <line x1="438" y1="171" x2="582" y2="89" stroke="#4A5090" stroke-width="0.7" stroke-opacity="0.22"/>
+          <!-- Reel perforations -->
+          <circle cx="510" cy="68" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="510" cy="192" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="448" cy="96" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="572" cy="164" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="448" cy="164" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="572" cy="96" r="5" fill="none" stroke="#4A5090" stroke-width="0.6" stroke-opacity="0.28"/>
+          <!-- Film strip bottom -->
+          <rect x="30" y="340" width="540" height="40" rx="2" fill="none" stroke="#4A5090" stroke-width="0.7" stroke-opacity="0.2"/>
+          <rect x="38" y="348" width="18" height="24" rx="2" fill="none" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="62" y="348" width="18" height="24" rx="2" fill="#4A5090" fill-opacity="0.12" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="86" y="348" width="18" height="24" rx="2" fill="none" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="110" y="348" width="18" height="24" rx="2" fill="#4A5090" fill-opacity="0.1" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="134" y="348" width="18" height="24" rx="2" fill="none" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="158" y="348" width="18" height="24" rx="2" fill="#4A5090" fill-opacity="0.12" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="182" y="348" width="18" height="24" rx="2" fill="none" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="206" y="348" width="18" height="24" rx="2" fill="none" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+          <rect x="230" y="348" width="18" height="24" rx="2" fill="#4A5090" fill-opacity="0.1" stroke="#4A5090" stroke-width="0.5" stroke-opacity="0.22"/>
+        </svg>
+      </div>
+      <div class="case-arrow">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="case-content">
+        <div class="case-domain">Entertainment &nbsp;&bull;&nbsp; VOX Cinemas, UAE</div>
+        <h3 class="case-title">Building a Design System for a 300+ Screen Network</h3>
+        <div class="case-meta-row">
+          <div class="case-meta">UX Designer &nbsp;&bull;&nbsp; 2019&ndash;2020</div>
+          <div class="case-metric">Bi-lingual <span>Arabic &amp; English</span></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 4: OLX - Classifieds listing grid, map pins, mobile device, tag clouds -->
+    <a href="#" class="case-card reveal reveal-delay-3">
+      <div class="case-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="olx-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#120E04"/><stop offset="45%" stop-color="#1A1206"/><stop offset="100%" stop-color="#0E0A02"/></linearGradient>
+            <linearGradient id="olx-g1" x1="40%" y1="50%" x2="85%" y2="20%"><stop offset="0%" stop-color="#B8920A" stop-opacity="0.45"/><stop offset="100%" stop-color="#B8920A" stop-opacity="0"/></linearGradient>
+            <linearGradient id="olx-g2" x1="10%" y1="70%" x2="60%" y2="30%"><stop offset="0%" stop-color="#8B6E10" stop-opacity="0.35"/><stop offset="100%" stop-color="#8B6E10" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#olx-bg)"/>
+          <rect width="600" height="400" fill="url(#olx-g1)"/>
+          <rect width="600" height="400" fill="url(#olx-g2)"/>
+          <!-- MOBILE DEVICE - left, tilted -->
+          <g transform="rotate(6, 120, 200)">
+            <rect x="30" y="60" width="170" height="290" rx="20" fill="none" stroke="#B8920A" stroke-width="1.4" stroke-opacity="0.35"/>
+            <rect x="30" y="60" width="170" height="290" rx="20" fill="#B8920A" fill-opacity="0.05"/>
+            <!-- Notch -->
+            <rect x="90" y="64" width="50" height="12" rx="6" fill="#0E0A02" fill-opacity="0.8"/>
+            <!-- Screen area -->
+            <rect x="40" y="82" width="150" height="248" rx="4" fill="none" stroke="#B8920A" stroke-width="0.5" stroke-opacity="0.2"/>
+            <!-- Listing cards on screen -->
+            <rect x="46" y="90" width="138" height="52" rx="3" fill="#B8920A" fill-opacity="0.1" stroke="#B8920A" stroke-width="0.5" stroke-opacity="0.22"/>
+            <rect x="52" y="96" width="38" height="38" rx="2" fill="#B8920A" fill-opacity="0.12"/>
+            <rect x="96" y="98" width="74" height="7" rx="1" fill="#B8920A" fill-opacity="0.3"/>
+            <rect x="96" y="110" width="54" height="5" rx="1" fill="#B8920A" fill-opacity="0.2"/>
+            <rect x="96" y="120" width="44" height="9" rx="1" fill="#B8920A" fill-opacity="0.25"/>
+            <rect x="46" y="148" width="138" height="52" rx="3" fill="#B8920A" fill-opacity="0.08" stroke="#B8920A" stroke-width="0.5" stroke-opacity="0.18"/>
+            <rect x="52" y="154" width="38" height="38" rx="2" fill="#B8920A" fill-opacity="0.1"/>
+            <rect x="96" y="156" width="60" height="7" rx="1" fill="#B8920A" fill-opacity="0.25"/>
+            <rect x="96" y="168" width="74" height="5" rx="1" fill="#B8920A" fill-opacity="0.18"/>
+            <rect x="96" y="178" width="50" height="9" rx="1" fill="#B8920A" fill-opacity="0.22"/>
+            <rect x="46" y="206" width="138" height="52" rx="3" fill="#B8920A" fill-opacity="0.1" stroke="#B8920A" stroke-width="0.5" stroke-opacity="0.2"/>
+            <rect x="52" y="212" width="38" height="38" rx="2" fill="#B8920A" fill-opacity="0.12"/>
+            <rect x="96" y="214" width="66" height="7" rx="1" fill="#B8920A" fill-opacity="0.28"/>
+            <!-- Bottom nav bar -->
+            <rect x="40" y="298" width="150" height="26" rx="2" fill="none" stroke="#B8920A" stroke-width="0.4" stroke-opacity="0.18"/>
+            <circle cx="80" cy="311" r="6" fill="none" stroke="#B8920A" stroke-width="0.6" stroke-opacity="0.3"/>
+            <circle cx="115" cy="311" r="6" fill="#B8920A" fill-opacity="0.25"/>
+            <circle cx="150" cy="311" r="6" fill="none" stroke="#B8920A" stroke-width="0.6" stroke-opacity="0.3"/>
+            <!-- Home button -->
+            <circle cx="115" cy="340" r="12" fill="none" stroke="#B8920A" stroke-width="0.8" stroke-opacity="0.25"/>
+          </g>
+          <!-- MAP WITH PINS - right side -->
+          <!-- Map grid -->
+          <line x1="300" y1="30" x2="300" y2="280" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="360" y1="30" x2="360" y2="280" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="420" y1="30" x2="420" y2="280" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="480" y1="30" x2="480" y2="280" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="540" y1="30" x2="540" y2="280" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="290" y1="80" x2="580" y2="80" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="290" y1="140" x2="580" y2="140" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <line x1="290" y1="200" x2="580" y2="200" stroke="#B8920A" stroke-width="0.3" stroke-opacity="0.1"/>
+          <!-- Road lines -->
+          <path d="M290 110 Q380 110 400 140 Q420 170 500 170" fill="none" stroke="#B8920A" stroke-width="1" stroke-opacity="0.16" stroke-dasharray="6,4"/>
+          <path d="M290 60 Q350 60 380 80 Q410 100 430 80 Q460 55 560 55" fill="none" stroke="#B8920A" stroke-width="0.8" stroke-opacity="0.12" stroke-dasharray="4,4"/>
+          <!-- Map pins -->
+          <circle cx="370" cy="95" r="8" fill="none" stroke="#B8920A" stroke-width="1" stroke-opacity="0.45"/>
+          <circle cx="370" cy="95" r="3" fill="#B8920A" fill-opacity="0.5"/>
+          <line x1="370" y1="103" x2="370" y2="112" stroke="#B8920A" stroke-width="0.8" stroke-opacity="0.35"/>
+          <circle cx="450" cy="130" r="8" fill="none" stroke="#B8920A" stroke-width="1" stroke-opacity="0.38"/>
+          <circle cx="450" cy="130" r="3" fill="#B8920A" fill-opacity="0.45"/>
+          <line x1="450" y1="138" x2="450" y2="148" stroke="#B8920A" stroke-width="0.8" stroke-opacity="0.3"/>
+          <circle cx="510" cy="75" r="6" fill="none" stroke="#B8920A" stroke-width="0.9" stroke-opacity="0.35"/>
+          <circle cx="510" cy="75" r="2.5" fill="#B8920A" fill-opacity="0.4"/>
+          <circle cx="320" cy="155" r="6" fill="none" stroke="#B8920A" stroke-width="0.9" stroke-opacity="0.32"/>
+          <circle cx="320" cy="155" r="2.5" fill="#B8920A" fill-opacity="0.38"/>
+          <circle cx="540" cy="155" r="10" fill="none" stroke="#B8920A" stroke-width="1.1" stroke-opacity="0.42"/>
+          <circle cx="540" cy="155" r="4" fill="#B8920A" fill-opacity="0.48"/>
+          <line x1="540" y1="165" x2="540" y2="178" stroke="#B8920A" stroke-width="0.9" stroke-opacity="0.35"/>
+          <!-- Price tags floating near pins -->
+          <rect x="348" y="66" width="44" height="16" rx="8" fill="#B8920A" fill-opacity="0.14" stroke="#B8920A" stroke-width="0.6" stroke-opacity="0.3"/>
+          <rect x="426" y="105" width="48" height="16" rx="8" fill="#B8920A" fill-opacity="0.12" stroke="#B8920A" stroke-width="0.6" stroke-opacity="0.28"/>
+          <rect x="518" y="128" width="44" height="16" rx="8" fill="#B8920A" fill-opacity="0.14" stroke="#B8920A" stroke-width="0.6" stroke-opacity="0.3"/>
+          <!-- Category tags bottom -->
+          <rect x="300" y="300" width="64" height="20" rx="10" fill="none" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.28"/>
+          <rect x="372" y="300" width="52" height="20" rx="10" fill="#B8920A" fill-opacity="0.12" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.3"/>
+          <rect x="432" y="300" width="72" height="20" rx="10" fill="none" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.25"/>
+          <rect x="512" y="300" width="58" height="20" rx="10" fill="none" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.25"/>
+          <rect x="316" y="328" width="80" height="20" rx="10" fill="#B8920A" fill-opacity="0.1" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.28"/>
+          <rect x="404" y="328" width="58" height="20" rx="10" fill="none" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.25"/>
+          <rect x="470" y="328" width="66" height="20" rx="10" fill="#B8920A" fill-opacity="0.1" stroke="#B8920A" stroke-width="0.7" stroke-opacity="0.28"/>
+        </svg>
+      </div>
+      <div class="case-arrow">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="case-content">
+        <div class="case-domain">eCommerce &nbsp;&bull;&nbsp; OLX, Indonesia</div>
+        <h3 class="case-title">Redesigning Revenue Flows for Southeast Asia's Largest Classifieds</h3>
+        <div class="case-meta-row">
+          <div class="case-meta">UX Designer &nbsp;&bull;&nbsp; 2018&ndash;2019</div>
+          <div class="case-metric">3 platforms <span>Web, iOS &amp; Android</span></div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CAPABILITIES + INDUSTRIES -->
+<section id="expertise">
+  <div class="hp-inner">
+    <div class="reveal">
+      <div class="section-tag">Industries</div>
+      <h2 class="section-title">Domains I've <em>worked across</em></h2>
+    </div>
+    <div class="domain-blocks reveal">
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1F4B3;</div>
+        <div class="domain-block-name">FinTech</div>
+        <div class="domain-block-detail">Fiserv multi-platform servicing, card management, financial workflows</div>
+      </div>
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1F3B0;</div>
+        <div class="domain-block-name">Gaming</div>
+        <div class="domain-block-detail">Endeavour Group data intelligence, slot analytics, venue management</div>
+      </div>
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1FA7A;</div>
+        <div class="domain-block-name">Healthcare</div>
+        <div class="domain-block-detail">EXL CareRadius health insurance platform, member management</div>
+      </div>
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1F6D2;</div>
+        <div class="domain-block-name">eCommerce</div>
+        <div class="domain-block-detail">OLX Indonesia classifieds, revenue features, multi-platform</div>
+      </div>
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1F3A5;</div>
+        <div class="domain-block-name">Entertainment</div>
+        <div class="domain-block-detail">VOX Cinemas design system, bilingual UI, mobile &amp; web</div>
+      </div>
+      <div class="domain-block">
+        <div class="domain-block-icon">&#x1F97D;</div>
+        <div class="domain-block-name">Extended Reality</div>
+        <div class="domain-block-detail">Omnicell HoloLens XR application for field service engineers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <div class="hp-inner">
+    <div class="reveal">
+      <div class="section-tag">How I Work</div>
+      <h2 class="section-title">A process built for <em>high-stakes decisions</em></h2>
+    </div>
+    <div class="method-grid">
+      <div class="method-card reveal reveal-delay-1">
+        <div class="method-num">01</div>
+        <h3 class="method-title"><em>Discover</em> the real problem</h3>
+        <p class="method-desc">I start with stakeholder alignment and user research before touching a wireframe. Problems that look like UX problems are often business or data problems in disguise.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-2">
+        <div class="method-num">02</div>
+        <h3 class="method-title"><em>Frame</em> with clarity</h3>
+        <p class="method-desc">Define the right problem space with information architecture and design principles before visual execution. Ambiguity at this stage costs 10x later in development.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-3">
+        <div class="method-num">03</div>
+        <h3 class="method-title"><em>Build</em> iteratively</h3>
+        <p class="method-desc">Rapid prototyping in Figma with continuous engineering alignment. I embed AI tools in my workflow for faster concept velocity, not as a replacement for judgment.</p>
+      </div>
+      <div class="method-card reveal reveal-delay-4">
+        <div class="method-num">04</div>
+        <h3 class="method-title"><em>Measure</em> what matters</h3>
+        <p class="method-desc">Usability testing, analytics review, and stakeholder feedback close the loop. Design decisions are hypotheses. Measuring makes them real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="metrics-inner">
+    <div class="metrics-label reveal">Impact at a glance</div>
+    <div class="metrics-grid">
+      <div class="metric-item reveal reveal-delay-1">
+        <div class="metric-num">$20M+</div>
+        <div class="metric-label">Revenue uplift attributed to gaming platform redesign</div>
+      </div>
+      <div class="metric-item reveal reveal-delay-2">
+        <div class="metric-num">95%</div>
+        <div class="metric-label">AI recommendation acceptance rate on GIH platform</div>
+      </div>
+      <div class="metric-item reveal reveal-delay-3">
+        <div class="metric-num">200+</div>
+        <div class="metric-label">Weekly decisions supported by data-driven UX</div>
+      </div>
+      <div class="metric-item reveal reveal-delay-4">
+        <div class="metric-num">6</div>
+        <div class="metric-label">Industries. FinTech, Gaming, Healthcare, eCommerce, XR, Media</div>
+      </div>
+      <div class="metric-item reveal">
+        <div class="metric-num">12+</div>
+        <div class="metric-label">Years of enterprise UX leadership, from pixels to product strategy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="hp-inner">
+    <div class="reveal">
+      <div class="section-tag">What Clients Say</div>
+      <h2 class="section-title" style="color: var(--white);">Evidence of <em>trust</em></h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card primary reveal reveal-delay-1">
+        <div class="quote-mark">"</div>
+        <p class="testimonial-text">Pankaj has been an outstanding partner throughout our engagement. His ability to translate complex data science outputs into clear, actionable interfaces made our team significantly more effective. The platform he designed changed how we make decisions at a venue level.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MM</div>
+          <div>
+            <div class="author-name">Mark Matthews</div>
+            <div class="author-role">Product Owner, Endeavour Group, Australia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="quote-mark">"</div>
+        <p class="testimonial-text">Working with Pankaj on the Gaming Intelligence Hub was a genuinely collaborative experience. He has an unusual ability to ask the right questions early, which saved us significant rework downstream. He bridges business analysis and UX in a way I haven't often encountered.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MF</div>
+          <div>
+            <div class="author-name">Matthew Falia</div>
+            <div class="author-role">Lead Business Analyst, Endeavour Group, Australia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="hp-inner">
+    <div class="section-tag reveal">The Person Behind the Work</div>
+    <div class="about-layout">
+      <div class="about-text reveal">
+        <h3>Engineer turned designer. Thinker who <em>builds</em>.</h3>
+        <p>I started with a Mechanical Engineering degree from Dr. J.J. Magdum College. Then I discovered that the most interesting problems in engineering are the human ones. That realisation led me to MIT Institute of Design in Pune, where I spent three years learning how to think about products at a systems level.</p>
+        <p>In 2013, I joined Think Design Collaborative in Bengaluru, working across Fortune 500 clients in finance, healthcare, and logistics. In 2015, I moved to Globant in Pune, where I have led UX engagements across six industry verticals over a decade.</p>
+        <p>I am not a designer who dabbles in strategy. I am a <strong>strategic thinker who leads with design</strong>. I have run discovery workshops with C-suite stakeholders in the morning and shipped Figma prototypes to engineering by end of day. I mentor junior designers, shape hiring decisions, and build design cultures that outlast individual projects.</p>
+        <p>Outside work: I am an <strong>aviation enthusiast</strong>. There is something about the discipline of cockpit UI design, where a bad decision costs lives, that I find profoundly instructive for enterprise UX. Clarity under pressure. No room for ambiguity. Every interaction accountable.</p>
+        <div class="about-links">
+          <a href="mailto:pan.khamitkar@gmail.com" class="btn btn-primary">SEND ME AN EMAIL</a>
+          <a href="https://linkedin.com/in/pankaj-khamitkar-b5540116" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn Profile</a>
+        </div>
+      </div>
+      <div class="about-sidebar reveal reveal-delay-2">
+        <div class="about-photo-frame">
+          <img src="assets/images/pankaj-photo.jpeg" alt="Pankaj Khamitkar">
+        </div>
+        <div class="about-credentials">
+          <div class="credential-item">
+            <div>
+              <div class="cred-name">Tech (Design) Manager</div>
+              <div class="cred-sub">Globant, Pune</div>
+            </div>
+            <div class="cred-year">2015&ndash;Now</div>
+          </div>
+          <div class="credential-item">
+            <div>
+              <div class="cred-name">UX Designer</div>
+              <div class="cred-sub">Think Design Collaborative, Bengaluru</div>
+            </div>
+            <div class="cred-year">2013&ndash;2015</div>
+          </div>
+          <div class="credential-item">
+            <div>
+              <div class="cred-name">PG Diploma, Product Design</div>
+              <div class="cred-sub">MIT Institute of Design, Pune</div>
+            </div>
+            <div class="cred-year">2010&ndash;2013</div>
+          </div>
+          <div class="credential-item">
+            <div>
+              <div class="cred-name">BE, Mechanical Engineering</div>
+              <div class="cred-sub">Dr. J.J. Magdum College of Engineering</div>
+            </div>
+            <div class="cred-year">2005&ndash;2009</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS STRIP MARQUEE -->
+<div id="skills-strip">
+  <div class="skills-track">
+    <div class="skills-track-inner">
+      <span class="skill-strip-pill">UX Strategy</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Product Discovery</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Journey Mapping</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">UX Audit</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Stakeholder Workshops</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Competitive Analysis</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Interaction Design</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Design Systems</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Prototyping</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Visual Design</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Usability Testing</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Information Architecture</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Cross-functional Collaboration</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Team Mentorship</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">AI-augmented Workflows</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Data-led Design</span>
+      <span class="skill-strip-dot"></span>
+    </div>
+    <div class="skills-track-inner" aria-hidden="true">
+      <span class="skill-strip-pill">UX Strategy</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Product Discovery</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Journey Mapping</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">UX Audit</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Stakeholder Workshops</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Competitive Analysis</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Interaction Design</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Design Systems</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Prototyping</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Visual Design</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Usability Testing</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Information Architecture</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Cross-functional Collaboration</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Team Mentorship</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">AI-augmented Workflows</span>
+      <span class="skill-strip-dot"></span>
+      <span class="skill-strip-pill">Data-led Design</span>
+      <span class="skill-strip-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="metrics-inner">
+    <div class="section-tag reveal">Available for New Roles</div>
+    <h2 class="contact-headline reveal">
+      Let's build something <em>worth building</em>.
+    </h2>
+    <p class="contact-sub reveal">
+      I'm open to senior UX leadership and design management roles where design sits close to product strategy. Remote, hybrid, or Pune-based.
+    </p>
+    <div class="contact-actions reveal">
+      <a href="mailto:pan.khamitkar@gmail.com" class="btn btn-primary">Send me an email</a>
+      <a href="https://linkedin.com/in/pankaj-khamitkar-b5540116" target="_blank" rel="noopener" class="btn btn-ghost">View LinkedIn</a>
+    </div>
+    <div class="contact-details reveal">
+      <a href="mailto:pan.khamitkar@gmail.com">pan.khamitkar@gmail.com</a>
+      <a href="https://linkedin.com/in/pankaj-khamitkar-b5540116" target="_blank" rel="noopener">linkedin.com/in/pankaj-khamitkar</a>
+      <span>Pune, India</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Pankaj Khamitkar &mdash; UX Design Leader</div>
+  <div class="footer-coords">18&#176;31'N &nbsp;73&#176;51'E &nbsp;&bull;&nbsp; Pune, India</div>
+  <div class="footer-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="mailto:pan.khamitkar@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

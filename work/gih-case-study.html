@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming Intelligence Hub &mdash; Pankaj Khamitkar</title>
+<meta name="description" content="How a small team learned to make confident decisions across 350 venues and 13,000 machines. $20M revenue uplift. 95% recommendation acceptance.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../assets/css/case-study.css">
+
+<style>
+/* ============================================================
+   GIH: page-specific styles only
+   Page accent: red (#C94C1A) — same as global, no override needed
+   ============================================================ */
+
+/* HERO: vector art background via inline SVG */
+#hero {
+  background: #100A06;
+  position: relative;
+}
+
+#hero .hero-svg-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#hero .hero-svg-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Push all hero children above the SVG layer */
+#hero .hero-grain,
+#hero .hero-label,
+#hero .hero-headline,
+#hero .hero-sub,
+#hero .hero-stat-row,
+#hero .scroll-cue {
+  z-index: 2;
+}
+
+/* SECTION COLOUR ALTERNATION */
+.problem-section  { background: var(--paper); }
+.discovery-section { background: var(--ink); }
+.pivot-section    { background: var(--paper-warm); }
+.principles-section { background: var(--ink); }
+.features-section { background: var(--paper); }
+.outcomes-section { background: var(--accent); }
+.testimonials-section { background: var(--ink); }
+.reflection-section { background: var(--paper-warm); }
+
+/* Complexity grid (problem section) */
+.complexity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 24px;
+}
+
+.complexity-cell {
+  background: var(--paper-warm);
+  padding: 20px 22px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s;
+}
+
+.complexity-cell:hover { border-color: var(--accent); }
+
+.complexity-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 36px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.complexity-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Problem layout */
+.problem-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+  margin-top: clamp(48px, 6vh, 72px);
+}
+
+.problem-left p {
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.problem-left p strong { color: var(--ink); font-weight: 400; }
+
+/* Research methods */
+.research-methods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: clamp(48px, 6vh, 72px);
+}
+
+.method-card {
+  background: rgba(253, 252, 251, 0.04);
+  padding: clamp(24px, 3vw, 40px) clamp(18px, 2.5vw, 32px);
+  border-left: 1px solid rgba(253, 252, 251, 0.07);
+  transition: background 0.25s;
+}
+
+.method-card:hover { background: rgba(253, 252, 251, 0.07); }
+
+.method-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 52px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(253, 252, 251, 0.08);
+  margin-bottom: 22px;
+}
+
+.method-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.method-title em { font-style: italic; color: var(--accent); }
+.method-detail { font-size: 13px; line-height: 1.7; color: rgba(253, 252, 251, 0.4); font-weight: 300; }
+
+.method-stats {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.method-stat {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(253, 252, 251, 0.3);
+  border: 1px solid rgba(253, 252, 251, 0.1);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* Artifacts row */
+.artifacts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+/* Insights row */
+.insights-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: clamp(40px, 5vh, 56px);
+}
+
+.insight-card {
+  background: rgba(253, 252, 251, 0.06);
+  padding: clamp(20px, 2.5vw, 32px) clamp(16px, 2vw, 24px);
+}
+
+.insight-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.insight-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.insight-body { font-size: 13px; line-height: 1.65; color: rgba(253, 252, 251, 0.4); font-weight: 300; }
+
+/* Pivot impact */
+.pivot-impact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: clamp(40px, 5vh, 60px);
+}
+
+.pivot-impact-item {
+  background: var(--paper);
+  padding: clamp(20px, 2.5vw, 32px) clamp(16px, 2vw, 24px);
+  border-top: 2px solid var(--border);
+  transition: border-color 0.25s;
+}
+
+.pivot-impact-item:hover { border-color: var(--accent); }
+
+.pii-head {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.pii-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* Principles grid */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-top: clamp(48px, 6vh, 72px);
+}
+
+.principle-card {
+  background: rgba(253, 252, 251, 0.04);
+  padding: clamp(24px, 3vw, 40px) clamp(18px, 2.5vw, 28px);
+  border-top: 2px solid rgba(253, 252, 251, 0.08);
+  transition: border-color 0.3s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.principle-card:hover { border-color: var(--accent); background: rgba(253, 252, 251, 0.07); }
+
+.principle-index {
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 64px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: rgba(253, 252, 251, 0.06);
+  margin-bottom: 20px;
+}
+
+.principle-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.principle-name em { font-style: italic; color: var(--accent); }
+.principle-body { font-size: 13px; line-height: 1.7; color: rgba(253, 252, 251, 0.38); font-weight: 300; }
+
+/* Outcomes */
+.outcomes-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: clamp(48px, 6vh, 72px);
+}
+
+.outcome-stat {
+  padding: clamp(24px, 3vw, 40px) clamp(18px, 2.5vw, 28px);
+  background: rgba(0, 0, 0, 0.12);
+  border-top: 2px solid rgba(253, 252, 251, 0.15);
+}
+
+.os-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.os-label { font-size: 13px; font-weight: 300; color: rgba(253, 252, 251, 0.65); margin-top: 10px; line-height: 1.4; }
+
+.outcomes-qual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .principles-grid   { grid-template-columns: repeat(3, 1fr); }
+  .research-methods  { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 1000px) {
+  .problem-layout    { grid-template-columns: 1fr; }
+  .research-methods  { grid-template-columns: 1fr 1fr; }
+  .insights-row      { grid-template-columns: 1fr 1fr; }
+  .principles-grid   { grid-template-columns: 1fr 1fr; }
+  .outcomes-stat-grid { grid-template-columns: 1fr 1fr; }
+  .outcomes-qual     { grid-template-columns: 1fr; }
+  .pivot-impact      { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .research-methods  { grid-template-columns: 1fr; }
+  .insights-row      { grid-template-columns: 1fr; }
+  .artifacts-row     { grid-template-columns: 1fr; }
+  .complexity-grid   { grid-template-columns: 1fr; }
+  .principles-grid   { grid-template-columns: 1fr 1fr; }
+  .outcomes-stat-grid { grid-template-columns: 1fr 1fr; }
+  .quote-grid        { grid-template-columns: 1fr; }
+  .outcomes-qual     { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 460px) {
+  .principles-grid   { grid-template-columns: 1fr; }
+  .outcomes-stat-grid { grid-template-columns: 1fr; }
+  .complexity-grid   { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">P<span>.</span>K</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../index.html#methodology">Process</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html" class="nav-back">All Projects</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-svg-bg">
+<svg width="100%" height="100%" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_964_2)">
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint0_linear_964_2)"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint1_linear_964_2)"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint2_linear_964_2)"></path>
+<path d="M1264.26 88.6353H936.265C927.428 88.6353 920.265 95.7987 920.265 104.635V592.635C920.265 601.472 927.428 608.635 936.265 608.635H1264.26C1273.1 608.635 1280.26 601.472 1280.26 592.635V104.635C1280.26 95.7987 1273.1 88.6353 1264.26 88.6353Z" fill="url(#paint3_linear_964_2)" stroke="#C9391A" stroke-opacity="0.3" stroke-width="1.4"></path>
+<path d="M1223.26 102.635H977.265C972.294 102.635 968.265 106.665 968.265 111.635C968.265 116.606 972.294 120.635 977.265 120.635H1223.26C1228.24 120.635 1232.26 116.606 1232.26 111.635C1232.26 106.665 1228.24 102.635 1223.26 102.635Z" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M990.265 117.135C993.302 117.135 995.765 114.673 995.765 111.635C995.765 108.598 993.302 106.135 990.265 106.135C987.227 106.135 984.765 108.598 984.765 111.635C984.765 114.673 987.227 117.135 990.265 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1015.26 117.135C1018.3 117.135 1020.76 114.673 1020.76 111.635C1020.76 108.598 1018.3 106.135 1015.26 106.135C1012.23 106.135 1009.76 108.598 1009.76 111.635C1009.76 114.673 1012.23 117.135 1015.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1040.26 117.135C1043.3 117.135 1045.76 114.673 1045.76 111.635C1045.76 108.598 1043.3 106.135 1040.26 106.135C1037.23 106.135 1034.76 108.598 1034.76 111.635C1034.76 114.673 1037.23 117.135 1040.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1065.26 117.135C1068.3 117.135 1070.76 114.673 1070.76 111.635C1070.76 108.598 1068.3 106.135 1065.26 106.135C1062.23 106.135 1059.76 108.598 1059.76 111.635C1059.76 114.673 1062.23 117.135 1065.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1090.26 117.135C1093.3 117.135 1095.76 114.673 1095.76 111.635C1095.76 108.598 1093.3 106.135 1090.26 106.135C1087.23 106.135 1084.76 108.598 1084.76 111.635C1084.76 114.673 1087.23 117.135 1090.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1115.26 117.135C1118.3 117.135 1120.76 114.673 1120.76 111.635C1120.76 108.598 1118.3 106.135 1115.26 106.135C1112.23 106.135 1109.76 108.598 1109.76 111.635C1109.76 114.673 1112.23 117.135 1115.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1140.26 117.135C1143.3 117.135 1145.76 114.673 1145.76 111.635C1145.76 108.598 1143.3 106.135 1140.26 106.135C1137.23 106.135 1134.76 108.598 1134.76 111.635C1134.76 114.673 1137.23 117.135 1140.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1165.26 117.135C1168.3 117.135 1170.76 114.673 1170.76 111.635C1170.76 108.598 1168.3 106.135 1165.26 106.135C1162.23 106.135 1159.76 108.598 1159.76 111.635C1159.76 114.673 1162.23 117.135 1165.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1190.26 117.135C1193.3 117.135 1195.76 114.673 1195.76 111.635C1195.76 108.598 1193.3 106.135 1190.26 106.135C1187.23 106.135 1184.76 108.598 1184.76 111.635C1184.76 114.673 1187.23 117.135 1190.26 117.135Z" fill="#C9391A" fill-opacity="0.38"></path>
+<path d="M1215.26 117.135C1218.3 117.135 1220.76 114.673 1220.76 111.635C1220.76 108.598 1218.3 106.135 1215.26 106.135C1212.23 106.135 1209.76 108.598 1209.76 111.635C1209.76 114.673 1212.23 117.135 1215.26 117.135Z" fill="#C9391A" fill-opacity="0.22"></path>
+<path d="M1076.26 146.635H954.265C952.056 146.635 950.265 148.426 950.265 150.635V170.635C950.265 172.844 952.056 174.635 954.265 174.635H1076.26C1078.47 174.635 1080.26 172.844 1080.26 170.635V150.635C1080.26 148.426 1078.47 146.635 1076.26 146.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#C9391A" stroke-opacity="0.24" stroke-width="0.7"></path>
+<path d="M1246.26 146.635H1124.26C1122.06 146.635 1120.26 148.426 1120.26 150.635V170.635C1120.26 172.844 1122.06 174.635 1124.26 174.635H1246.26C1248.47 174.635 1250.26 172.844 1250.26 170.635V150.635C1250.26 148.426 1248.47 146.635 1246.26 146.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#3B5240" stroke-opacity="0.24" stroke-width="0.7"></path>
+<path d="M1042.26 156.635H966.265C965.16 156.635 964.265 157.531 964.265 158.635V162.635C964.265 163.74 965.16 164.635 966.265 164.635H1042.26C1043.37 164.635 1044.26 163.74 1044.26 162.635V158.635C1044.26 157.531 1043.37 156.635 1042.26 156.635Z" fill="#C9391A" fill-opacity="0.32"></path>
+<path d="M1212.26 156.635H1136.26C1135.16 156.635 1134.26 157.531 1134.26 158.635V162.635C1134.26 163.74 1135.16 164.635 1136.26 164.635H1212.26C1213.37 164.635 1214.26 163.74 1214.26 162.635V158.635C1214.26 157.531 1213.37 156.635 1212.26 156.635Z" fill="#3B5240" fill-opacity="0.32"></path>
+<path d="M1254.26 186.635H956.265C952.951 186.635 950.265 189.322 950.265 192.635V398.635C950.265 401.949 952.951 404.635 956.265 404.635H1254.26C1257.58 404.635 1260.26 401.949 1260.26 398.635V192.635C1260.26 189.322 1257.58 186.635 1254.26 186.635Z" fill="#0D0B09" fill-opacity="0.2" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1053.26 186.635V404.635" stroke="#C9391A" stroke-opacity="0.22"></path>
+<path d="M1156.26 186.635V404.635" stroke="#C9391A" stroke-opacity="0.22"></path>
+<path d="M1260.26 231.635H950.265V340.635H1260.26V271.635Z" fill="#C9391A" fill-opacity="0.06"></path>
+<path d="M950.265 231.635H1260.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M950.265 340.635H1260.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="0.8"></path>
+<path d="M1001.26 323.635C1015.62 323.635 1027.26 311.995 1027.26 297.635C1027.26 283.276 1015.62 271.635 1001.26 271.635C986.905 271.635 975.265 283.276 975.265 297.635C975.265 311.995 986.905 323.635 1001.26 323.635Z" stroke="#C9391A" stroke-opacity="0.38" stroke-width="1.5"></path>
+<path d="M1001.26 312.635C1009.55 312.635 1016.26 305.92 1016.26 297.635C1016.26 289.351 1009.55 282.635 1001.26 282.635C992.98 282.635 986.265 289.351 986.265 297.635C986.265 305.92 992.98 312.635 1001.26 312.635Z" fill="#C9391A" fill-opacity="0.16"></path>
+<path d="M1001.26 271.635C1007.26 258.969 1016.93 251.302 1030.26 248.635" stroke="#C9391A" stroke-opacity="0.32" stroke-width="1.3" stroke-linecap="round"></path>
+<path d="M1001.26 271.635C995.264 258.969 1004.93 251.302 1030.26 248.635" stroke="#C9391A" stroke-opacity="0.32" stroke-width="1.3" stroke-linecap="round"></path>
+<path d="M1030.26 259.635C1037.44 259.635 1043.26 253.815 1043.26 246.635C1043.26 239.456 1037.44 233.635 1030.26 233.635C1023.08 233.635 1017.26 239.456 1017.26 246.635C1017.26 253.815 1023.08 259.635 1030.26 259.635Z" stroke="#C9391A" stroke-opacity="0.28" stroke-width="1.1"></path>
+<path d="M1135.26 256.635H1073.26C1071.61 256.635 1070.26 257.978 1070.26 259.635V269.635C1070.26 271.292 1071.61 272.635 1073.26 272.635H1135.26C1136.92 272.635 1138.26 271.292 1138.26 269.635V259.635C1138.26 257.978 1136.92 256.635 1135.26 256.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1135.26 278.635H1073.26C1071.61 278.635 1070.26 279.978 1070.26 281.635V291.635C1070.26 293.292 1071.61 294.635 1073.26 294.635H1135.26C1136.92 294.635 1138.26 293.292 1138.26 291.635V281.635C1138.26 279.978 1136.92 278.635 1135.26 278.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1135.26 300.635H1073.26C1071.61 300.635 1070.26 301.978 1070.26 303.635V313.635C1070.26 315.292 1071.61 316.635 1073.26 316.635H1135.26C1136.92 316.635 1138.26 315.292 1138.26 313.635V303.635C1138.26 301.978 1136.92 300.635 1135.26 300.635Z" stroke="#C9391A" stroke-opacity="0.36" stroke-width="1.2"></path>
+<path d="M1126.26 260.635H1080.26C1079.16 260.635 1078.26 261.531 1078.26 262.635V266.635C1078.26 267.74 1079.16 268.635 1080.26 268.635H1126.26C1127.37 268.635 1128.26 267.74 1128.26 266.635V262.635C1128.26 261.531 1127.37 260.635 1126.26 260.635Z" fill="#C9391A" fill-opacity="0.2"></path>
+<path d="M1172.26 244.635H1222.26L1194.26 326.635" stroke="#C9391A" stroke-opacity="0.38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M1176.26 264.635H1218.26" stroke="#C9391A" stroke-opacity="0.28" stroke-width="1.1"></path>
+<path d="M1009.26 422.635H977.265C967.876 422.635 960.265 430.246 960.265 439.635C960.265 449.024 967.876 456.635 977.265 456.635H1009.26C1018.65 456.635 1026.26 449.024 1026.26 439.635C1026.26 430.246 1018.65 422.635 1009.26 422.635Z" stroke="#C9391A" stroke-opacity="0.26"></path>
+<path d="M1149.26 422.635H1051.26C1041.88 422.635 1034.26 430.246 1034.26 439.635C1034.26 449.024 1041.88 456.635 1051.26 456.635H1149.26C1158.65 456.635 1166.26 449.024 1166.26 439.635C1166.26 430.246 1158.65 422.635 1149.26 422.635Z" fill="#C9391A" fill-opacity="0.14" stroke="#C9391A" stroke-opacity="0.36"></path>
+<path d="M1223.26 422.635H1191.26C1181.88 422.635 1174.26 430.246 1174.26 439.635C1174.26 449.024 1181.88 456.635 1191.26 456.635H1223.26C1232.65 456.635 1240.26 449.024 1240.26 439.635C1240.26 430.246 1232.65 422.635 1223.26 422.635Z" stroke="#C9391A" stroke-opacity="0.26"></path>
+<path d="M1208.26 472.635H992.265C984.533 472.635 978.265 478.903 978.265 486.635C978.265 494.367 984.533 500.635 992.265 500.635H1208.26C1216 500.635 1222.26 494.367 1222.26 486.635C1222.26 478.903 1216 472.635 1208.26 472.635Z" stroke="#C9391A" stroke-opacity="0.2"></path>
+<path d="M992.265 486.635H1210.26" stroke="#C9391A" stroke-opacity="0.12" stroke-width="0.4"></path>
+<path d="M1280.26 196.635V348.635" stroke="#C9391A" stroke-opacity="0.24" stroke-width="2.8"></path>
+<path d="M1280.26 202.635C1292.41 202.635 1302.26 192.786 1302.26 180.635C1302.26 168.485 1292.41 158.635 1280.26 158.635C1268.11 158.635 1258.26 168.485 1258.26 180.635C1258.26 192.786 1268.11 202.635 1280.26 202.635Z" stroke="#C9391A" stroke-opacity="0.26" stroke-width="1.4"></path>
+<path d="M1280.26 191.635C1286.34 191.635 1291.26 186.71 1291.26 180.635C1291.26 174.56 1286.34 169.635 1280.26 169.635C1274.19 169.635 1269.26 174.56 1269.26 180.635C1269.26 186.71 1274.19 191.635 1280.26 191.635Z" fill="#C9391A" fill-opacity="0.16"></path>
+<path d="M970.265 608.635L950.265 656.635" stroke="#C9391A" stroke-opacity="0.15" stroke-width="1.5"></path>
+<path d="M1230.26 608.635L1250.26 656.635" stroke="#C9391A" stroke-opacity="0.15" stroke-width="1.5"></path>
+<path d="M946.265 656.635H1254.26" stroke="#C9391A" stroke-opacity="0.12" stroke-width="0.8"></path>
+<path d="M259 284L287 324L259 364L231 324L259 284Z" stroke="#C9391A" stroke-opacity="0.2" stroke-width="1.1"></path>
+<path d="M259 298L275 324L259 350L243 324L259 298Z" fill="#C9391A" fill-opacity="0.07"></path>
+<path d="M460 110C476.569 110 490 96.5685 490 80C490 63.4315 476.569 50 460 50C443.431 50 430 63.4315 430 80C430 96.5685 443.431 110 460 110Z" stroke="#C9391A" stroke-opacity="0.18" stroke-width="0.8"></path>
+<path d="M460 96C468.837 96 476 88.8366 476 80C476 71.1634 468.837 64 460 64C451.163 64 444 71.1634 444 80C444 88.8366 451.163 96 460 96Z" stroke="#C9391A" stroke-opacity="0.14" stroke-width="0.7"></path>
+<path d="M530 130C542.703 130 553 119.703 553 107C553 94.2975 542.703 84 530 84C517.297 84 507 94.2975 507 107C507 119.703 517.297 130 530 130Z" stroke="#C9391A" stroke-opacity="0.14" stroke-width="0.6"></path>
+<path d="M336.706 338.882C338.219 338.882 339.446 337.655 339.446 336.142C339.446 334.629 338.219 333.402 336.706 333.402C335.193 333.402 333.966 334.629 333.966 336.142C333.966 337.655 335.193 338.882 336.706 338.882Z" stroke="#3B5240" stroke-opacity="0.28" stroke-width="0.487059"></path>
+<path d="M458.471 343.753C459.984 343.753 461.211 342.527 461.211 341.014C461.211 339.5 459.984 338.274 458.471 338.274C456.958 338.274 455.731 339.5 455.731 341.014C455.731 342.527 456.958 343.753 458.471 343.753Z" stroke="#3B5240" stroke-opacity="0.26" stroke-width="0.487059"></path>
+<path d="M580.235 338.882C581.748 338.882 582.975 337.655 582.975 336.142C582.975 334.629 581.748 333.402 580.235 333.402C578.722 333.402 577.495 334.629 577.495 336.142C577.495 337.655 578.722 338.882 580.235 338.882Z" stroke="#3B5240" stroke-opacity="0.24" stroke-width="0.487059"></path>
+<path d="M641.117 332.185C644.816 332.185 647.815 329.187 647.815 325.488C647.815 321.79 644.816 318.791 641.117 318.791C637.419 318.791 634.42 321.79 634.42 325.488C634.42 329.187 637.419 332.185 641.117 332.185Z" stroke="#C9391A" stroke-opacity="0.2" stroke-width="0.487059"></path>
+<path d="M336.706 338.882L397.588 323.662" stroke="#3B5240" stroke-opacity="0.17" stroke-width="0.365294"></path>
+<path d="M397.588 323.662L458.471 343.753" stroke="#C9391A" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M458.471 343.753L519.353 327.924" stroke="#3B5240" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M519.353 327.924L580.235 338.882" stroke="#C9391A" stroke-opacity="0.16" stroke-width="0.365294"></path>
+<path d="M580.235 338.882L641.118 325.488" stroke="#3B5240" stroke-opacity="0.15" stroke-width="0.365294"></path>
+<path d="M397.588 326.402C399.101 326.402 400.328 325.175 400.328 323.662C400.328 322.149 399.101 320.922 397.588 320.922C396.075 320.922 394.849 322.149 394.849 323.662C394.849 325.175 396.075 326.402 397.588 326.402Z" fill="#C9391A" fill-opacity="0.45"></path>
+<path d="M519.353 330.663C520.866 330.663 522.093 329.437 522.093 327.924C522.093 326.41 520.866 325.184 519.353 325.184C517.84 325.184 516.613 326.41 516.613 327.924C516.613 329.437 517.84 330.663 519.353 330.663Z" fill="#C9391A" fill-opacity="0.4"></path>
+<path d="M641.118 327.924C642.463 327.924 643.553 326.833 643.553 325.488C643.553 324.143 642.463 323.053 641.118 323.053C639.773 323.053 638.683 324.143 638.683 325.488C638.683 326.833 639.773 327.924 641.118 327.924Z" fill="#3B5240" fill-opacity="0.5"></path>
+<path d="M323.312 320.618H295.306C294.634 320.618 294.088 321.163 294.088 321.835V349.841C294.088 350.514 294.634 351.059 295.306 351.059H323.312C323.984 351.059 324.53 350.514 324.53 349.841V321.835C324.53 321.163 323.984 320.618 323.312 320.618Z" stroke="#3B5240" stroke-opacity="0.14" stroke-width="0.243529"></path>
+<path d="M301.394 329.75C302.403 329.75 303.22 328.932 303.22 327.924C303.22 326.915 302.403 326.097 301.394 326.097C300.385 326.097 299.567 326.915 299.567 327.924C299.567 328.932 300.385 329.75 301.394 329.75Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M309.918 329.75C310.927 329.75 311.744 328.932 311.744 327.924C311.744 326.915 310.927 326.097 309.918 326.097C308.909 326.097 308.091 326.915 308.091 327.924C308.091 328.932 308.909 329.75 309.918 329.75Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M301.394 337.056C302.403 337.056 303.22 336.238 303.22 335.229C303.22 334.221 302.403 333.403 301.394 333.403C300.385 333.403 299.567 334.221 299.567 335.229C299.567 336.238 300.385 337.056 301.394 337.056Z" fill="#C9391A" fill-opacity="0.24"></path>
+<path d="M309.918 337.056C310.927 337.056 311.744 336.238 311.744 335.229C311.744 334.221 310.927 333.403 309.918 333.403C308.909 333.403 308.091 334.221 308.091 335.229C308.091 336.238 308.909 337.056 309.918 337.056Z" fill="#C9391A" fill-opacity="0.24"></path>
+<path d="M301.394 344.362C302.403 344.362 303.22 343.544 303.22 342.535C303.22 341.527 302.403 340.709 301.394 340.709C300.385 340.709 299.567 341.527 299.567 342.535C299.567 343.544 300.385 344.362 301.394 344.362Z" fill="#C9391A" fill-opacity="0.3"></path>
+<path d="M309.918 344.362C310.927 344.362 311.744 343.544 311.744 342.535C311.744 341.527 310.927 340.709 309.918 340.709C308.909 340.709 308.091 341.527 308.091 342.535C308.091 343.544 308.909 344.362 309.918 344.362Z" fill="#C9391A" fill-opacity="0.18"></path>
+<path d="M318.441 329.75C319.45 329.75 320.268 328.932 320.268 327.924C320.268 326.915 319.45 326.097 318.441 326.097C317.432 326.097 316.615 326.915 316.615 327.924C316.615 328.932 317.432 329.75 318.441 329.75Z" fill="#3B5240" fill-opacity="0.35"></path>
+<path d="M318.441 337.056C319.45 337.056 320.268 336.238 320.268 335.229C320.268 334.221 319.45 333.403 318.441 333.403C317.432 333.403 316.615 334.221 316.615 335.229C316.615 336.238 317.432 337.056 318.441 337.056Z" fill="#3B5240" fill-opacity="0.35"></path>
+<path d="M1440 0H0V720H1440V0Z" fill="url(#paint4_linear_964_2)"></path>
+</g>
+<defs>
+<linearGradient id="paint0_linear_964_2" x1="0" y1="0" x2="576" y2="1152" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1A0E08"></stop>
+<stop offset="0.38" stop-color="#2C1006"></stop>
+<stop offset="0.68" stop-color="#0F1A10"></stop>
+<stop offset="1" stop-color="#0A1208"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_964_2" x1="1254.5" y1="532.5" x2="337.162" y2="791.89" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C9391A" stop-opacity="0.55"></stop>
+<stop offset="1" stop-color="#C9391A" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_964_2" x1="269" y1="123.5" x2="1111.32" y2="-37.3813" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B5240" stop-opacity="0.48"></stop>
+<stop offset="1" stop-color="#3B5240" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint3_linear_964_2" x1="920.265" y1="88.6353" x2="1280.26" y2="88.6353" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C9391A" stop-opacity="0.05"></stop>
+<stop offset="0.5" stop-color="#C9391A" stop-opacity="0.11"></stop>
+<stop offset="1" stop-color="#C9391A" stop-opacity="0.03"></stop>
+</linearGradient>
+<linearGradient id="paint4_linear_964_2" x1="0" y1="0" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+<stop stop-color="#100A06" stop-opacity="0.2"></stop>
+<stop offset="0.55" stop-color="#100A06" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#100A06" stop-opacity="0.88"></stop>
+</linearGradient>
+<clipPath id="clip0_964_2">
+<rect width="1440" height="720" fill="white"></rect>
+</clipPath>
+</defs>
+    </svg>
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-label">Case Study &nbsp;&bull;&nbsp; Endeavour Group, Australia &nbsp;&bull;&nbsp; 2023&ndash;2025</div>
+  <h1 class="hero-headline">
+    Gaming<br><em>Intelligence</em><br>Hub
+  </h1>
+  <p class="hero-sub">How a small team learned to make confident decisions across 350 venues and 13,000 machines, without hiring more people.</p>
+  <div class="hero-stat-row">
+    <div>
+      <div class="hero-stat-num">$20M</div>
+      <div class="hero-stat-label">Revenue Uplift FY24&ndash;25</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">95%</div>
+      <div class="hero-stat-label">Recommendation Acceptance</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">200+</div>
+      <div class="hero-stat-label">Weekly AI Recommendations</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">0.5 day</div>
+      <div class="hero-stat-label">Review Cycle vs. Days Before</div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="ctx-cell">
+    <div class="ctx-key">Client</div>
+    <div class="ctx-val"><strong>Endeavour Group</strong><br>Australia</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">My Role</div>
+    <div class="ctx-val"><strong>Lead UX Designer</strong><br>Sole Design Owner</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Duration</div>
+    <div class="ctx-val"><strong>30 Months</strong><br>Jan 2023 &ndash; Jun 2025</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Scale</div>
+    <div class="ctx-val"><strong>13K+ machines</strong><br>350+ venues, multi-state</div>
+  </div>
+  <div class="ctx-cell">
+    <div class="ctx-key">Domain</div>
+    <div class="ctx-val"><strong>Enterprise AI</strong><br>Gaming &amp; Hospitality</div>
+  </div>
+</div>
+
+<!-- SECTION 1: THE PROBLEM -->
+<section class="section problem-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">The Problem</div>
+    <h2 class="section-title reveal">One small team.<br>An <em>enormous</em> operation.</h2>
+
+    <div class="problem-layout">
+      <div class="problem-left reveal">
+        <p>Endeavour Group's Gaming Product Team was responsible for the performance of every gaming machine across every venue they operated. That meant constant decisions about machine selection, game content, jackpot settings, cabinet changes, and venue mix.</p>
+        <p>The team was highly experienced. <strong>The problem was not expertise. The problem was that the scale of decisions </strong> had grown beyond what any team could comfortably manage through manual analysis and spreadsheets.</p>
+        <p>Each decision required cross-referencing venue demographics, machine performance data, player behaviour patterns, regulatory constraints, and seasonal trends. Simultaneously. Across hundreds of venues.</p>
+        <!-- <p>And the original brief? <strong>Optimise RTP, Hold, and Jackpot settings.</strong> It took onsite discovery sessions in Australia to surface the real challenge underneath.</p>-->
+      </div>
+
+      <div class="problem-right reveal rd2">
+        <div class="pull-quote">
+          <p class="pull-quote-text">The organisation didn't need better optimisation models. It needed a scalable way to make expert decisions, faster, across a complexity that was already beyond manual control.</p>
+          <div class="pull-quote-source">Discovery insight, January 2024</div>
+        </div>
+
+        <div class="complexity-grid">
+          <div class="complexity-cell">
+            <div class="complexity-num">13K+</div>
+            <div class="complexity-desc">Gaming machines requiring active management</div>
+          </div>
+          <div class="complexity-cell">
+            <div class="complexity-num">350+</div>
+            <div class="complexity-desc">Venues across multiple Australian states</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: DISCOVERY -->
+<section class="section discovery-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Discovery &amp; Research</div>
+    <h2 class="section-title reveal" style="color: var(--white);">Flying to Australia to
+<em>understand the pokies</em></h2>
+
+    <div class="research-methods">
+      <div class="method-card reveal">
+        <div class="method-num">01</div>
+        <div class="method-title">Stakeholder <em>Interviews</em></div>
+        <div class="method-detail">Onsite sessions in Australia with the Gaming Head, business stakeholders, venue managers, and operations managers. Focused on workflow reality, not aspirational process.</div>
+        <div class="method-stats">
+          <span class="method-stat">6 Stakeholders</span>
+          <span class="method-stat">5 Venue Managers</span>
+          <span class="method-stat">2 Ops Managers</span>
+        </div>
+      </div>
+      <div class="method-card reveal rd1">
+        <div class="method-num">02</div>
+        <div class="method-title">Player <em>Research</em></div>
+        <div class="method-detail">In-depth interviews with gaming customers across Sydney and Melbourne. Player motivations, machine preferences, and behavioural patterns that inform venue mix decisions.</div>
+        <div class="method-stats">
+          <span class="method-stat">7 Player Interviews</span>
+          <span class="method-stat">Askable Platform</span>
+        </div>
+      </div>
+      <div class="method-card reveal rd2">
+        <div class="method-num">03</div>
+        <div class="method-title">Quantitative <em>Survey</em></div>
+        <div class="method-detail">Large-scale player survey to validate qualitative findings and surface statistically significant preference patterns across denomination, jackpot size, and game features.</div>
+        <div class="method-stats">
+          <span class="method-stat">177 Participants</span>
+          <span class="method-stat">51 Male / 128 Female</span>
+        </div>
+      </div>
+      <div class="method-card reveal rd3">
+        <div class="method-num">04</div>
+        <div class="method-title">Field <em>Research</em></div>
+        <div class="method-detail">Venue visits across Sydney and Melbourne. Observed gaming floor layouts, machine arrangements, player flow, and competitor venue environments firsthand.</div>
+        <div class="method-stats">
+          <span class="method-stat">Sydney + Melbourne</span>
+          <span class="method-stat">Competitor Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifacts-row reveal" style="margin-top: clamp(48px, 6vh, 72px)">
+      <div>
+        <div class="img-wrap ratio-4-3">
+          <img src="../assets/images/work/gih-survey-results-1.jpg" alt="Player motivation mapping from a user interview">
+        </div>
+        <div class="img-caption">User Interview &mdash; Player motivation mapping</div>
+      </div>
+      <div>
+        <div class="img-wrap ratio-4-3">
+  <img src="../assets/images/work/gih-survey-results-1.jpg" alt="User interview findings on feature and payout preferences">
+</div>
+        <div class="img-caption">User Interview &mdash; Feature and payout preference signals</div>
+      </div>
+      <div>
+        <div class="img-wrap ratio-4-3">
+  <img src="../assets/images/work/gih-survey-results.jpg" alt="Field research at gaming venues in Melbourne and Sydney">
+</div>
+        <div class="img-caption">Field Research &mdash; Venues in Melbourne and Sydney</div>
+      </div>
+    </div>
+
+    <div class="insights-row">
+      <div class="insight-card reveal">
+        <div class="insight-num">Insight 01</div>
+        <div class="insight-title">The Expertise Bottleneck</div>
+        <div class="insight-body">Decision quality depended entirely on specialist knowledge held by a small group. There was no mechanism to scale that knowledge across the operation.</div>
+      </div>
+      <div class="insight-card reveal rd1">
+        <div class="insight-num">Insight 02</div>
+        <div class="insight-title">Data Was Not the Problem</div>
+        <div class="insight-body">The organisation had data. The real friction was the effort required to review it, interpret it, and convert it into confident operational action at scale.</div>
+      </div>
+      <div class="insight-card reveal rd2">
+        <div class="insight-num">Insight 03</div>
+        <div class="insight-title">Workflow Matters as Much as Logic</div>
+        <div class="insight-body">Recommendations without a surrounding workflow to support review, actioning, and feedback would not change behaviour. The whole loop needed designing.</div>
+      </div>
+      <div class="insight-card reveal rd3">
+        <div class="insight-num">Insight 04</div>
+        <div class="insight-title">Trust Has to Be Earned</div>
+        <div class="insight-body">Stakeholders had decades of experience with spreadsheets and manual methods. AI adoption required transparency, rationale visibility, and iterative trust-building.</div>
+      </div>
+    </div>
+
+    <div class="quote-grid" style="margin-top: clamp(40px, 5vh, 56px)">
+      <div class="quote-card reveal">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">It is an adult amusement park. I go for the experience, not just to win.</p>
+        <div class="quote-person">Research Participant A &nbsp;&bull;&nbsp; NSW, weekly player</div>
+      </div>
+      <div class="quote-card reveal rd1">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">If I feel jackpots are not achievable, I won't put money into it.</p>
+        <div class="quote-person">Research Participant B &nbsp;&bull;&nbsp; Newcastle, weekly player</div>
+      </div>
+      <div class="quote-card reveal rd2">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">One pokie is similar to another. A location is pretty much the same as the next.</p>
+        <div class="quote-person">Research Participant C &nbsp;&bull;&nbsp; Sydney, project manager</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE PIVOT -->
+<section class="section pivot-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">The Defining Moment</div>
+    <h2 class="section-title reveal">The project we were <em>hired for</em><br>was not the project we needed to solve.</h2>
+
+    <div class="pivot-reframe reveal">
+      <div class="pivot-box from">
+        <div class="pivot-box-label">Original Brief</div>
+        <p class="pivot-box-text">Optimise RTP, Hold, and Jackpot settings across machines</p>
+      </div>
+      <div class="pivot-arrow">&#8594;</div>
+      <div class="pivot-box to">
+        <div class="pivot-box-label">Reframed Challenge</div>
+        <p class="pivot-box-text">How might experts make faster, more scalable, more confident decisions across a complex multi-venue ecosystem?</p>
+      </div>
+    </div>
+
+    <div class="pivot-impact reveal">
+      <div class="pivot-impact-item">
+        <div class="pii-head">Product Vision Expanded</div>
+        <div class="pii-body">From isolated optimisation models to a centralised decision intelligence platform. This shift unlocked the case for building a dedicated product rather than extending an existing reporting tool.</div>
+      </div>
+      <div class="pivot-impact-item">
+        <div class="pii-head">Research Direction Redirected</div>
+        <div class="pii-body">Instead of studying machine mathematics, discovery focused on how decisions were actually made, where friction lived, and what made stakeholders trust or distrust a recommendation.</div>
+      </div>
+      <div class="pivot-impact-item">
+        <div class="pii-head">Design Philosophy Grounded</div>
+        <div class="pii-body">The pivot made one thing clear: the system's job was not to automate decisions, but to make human experts faster, more confident, and more consistent at making them.</div>
+      </div>
+    </div>
+
+</div><!-- close section-inner -->
+
+  <div class="img-wrap ratio-2-1">
+    <img src="../assets/images/work/gih-discovery-workshop-artifact.jpg" alt="Onsite discovery workshop output aligning stakeholders on the reframed problem">
+  </div>
+  <div class="img-caption" style="margin-top: 12px; padding: 0 var(--gutter);">Onsite discovery workshop output &mdash; stakeholder alignment on the reframed problem statement</div>
+
+</section>
+
+<!-- SECTION 4: DESIGN PRINCIPLES -->
+<section class="section principles-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Design Strategy</div>
+    <h2 class="section-title reveal" style="color: var(--white)">Five principles that<br>shaped every <em>decision</em></h2>
+
+    <div class="principles-grid">
+      <div class="principle-card reveal">
+        <div class="principle-index">01</div>
+        <div class="principle-name"><em>Human</em> in Control</div>
+        <div class="principle-body">AI proposes. Experts decide. The system never removes agency. Every recommendation surface maintains clear override capability and decision ownership for the analyst.</div>
+      </div>
+      <div class="principle-card reveal rd1">
+        <div class="principle-index">02</div>
+        <div class="principle-name">Explainable <em>Intelligence</em></div>
+        <div class="principle-body">Stakeholders needed to ask "why this recommendation?" and get a credible answer. Trust cannot be assumed. Every recommendation includes rationale, confidence signals, and supporting evidence.</div>
+      </div>
+      <div class="principle-card reveal rd2">
+        <div class="principle-index">03</div>
+        <div class="principle-name">Speed <em>with</em> Clarity</div>
+        <div class="principle-body">Reducing review time was the primary operational goal. But not at the cost of understanding. Design work centred on surfacing the right information at the right moment, not displaying everything.</div>
+      </div>
+      <div class="principle-card reveal rd3">
+        <div class="principle-index">04</div>
+        <div class="principle-name">Transparency <em>and</em> Feedback</div>
+        <div class="principle-body">AI systems improve through learning loops. The platform captures accepted and rejected recommendations, plus rejection reasoning, creating a feedback channel from human expertise back into the model.</div>
+      </div>
+      <div class="principle-card reveal rd4">
+        <div class="principle-index">05</div>
+        <div class="principle-name">Designed <em>for</em> Scale</div>
+        <div class="principle-body">Most tools were built for single-venue casino operations. Endeavour needed enterprise-scale portfolio visibility alongside venue-level operational detail. Both had to coexist in the same product.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FEATURES -->
+<section class="section features-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">What Was Built</div>
+    <h2 class="section-title reveal">Four capabilities that <em>changed</em> how the team worked</h2>
+
+    <!-- FEATURE 1 -->
+    <div class="feature-block" style="margin-top: clamp(56px, 7vh, 88px)">
+      <div class="feature-header reveal">
+        <div class="feature-num">01</div>
+        <div class="feature-meta">
+          <div class="feature-tag">Core Workflow</div>
+          <h3 class="feature-name">Recommendation <em>Console</em></h3>
+          <p class="feature-premise">The centre of the platform. Designed not as a feed to read, but as a decision environment to act from: review, analyse, question, and action in one place.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- close section-inner -->
+
+<div class="img-wrap ratio-2-1">
+    <div class="img-placeholder">
+      <div class="img-wrap ratio-2-1">
+  <img src="../assets/images/work/gih-recommendation-console.jpg" alt="Recommendation console showing the explainability layer for a recommendation">
+</div>
+    </div>
+  </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">Explainability layer &mdash; "why this recommendation?" rationale expanded view</div>
+
+  <div class="section-inner"><!-- reopen section-inner -->
+    <div class="feature-block" style="border-bottom: 1px solid var(--border); padding-bottom: clamp(80px, 10vh, 120px); margin-bottom: clamp(80px, 10vh, 120px);">
+      <div class="feature-body reveal" style="margin-top: clamp(32px, 4vh, 48px);">
+        <div class="pdi-row">
+          <div class="pdi-item">
+            <div class="pdi-key">The Problem</div>
+            <div class="pdi-body">The team spent days cross-referencing spreadsheets, multiple data sources, and manual notes to evaluate each recommendation. The process was slow, inconsistent, and difficult to delegate.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Design Decision</div>
+            <div class="pdi-body">Recommendations were designed as <strong>structured decision objects</strong>, each containing the change, expected impact, rationale, confidence level, and supporting evidence. The console became the primary workspace for review, not a passive report.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Outcome</div>
+            <div class="pdi-body">Review cycles that previously required multiple days could routinely be completed in <strong>approximately half a day</strong>. Acceptance rate reached 95%, reflecting stakeholder trust in recommendation quality and transparency.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 2 -->
+    <div class="feature-block">
+      <div class="feature-header reveal">
+        <div class="feature-num">02</div>
+        <div class="feature-meta">
+          <div class="feature-tag">Spatial Intelligence</div>
+          <h3 class="feature-name">Venue <em>Map System</em></h3>
+          <p class="feature-premise">Gaming decisions are inherently spatial. A machine's position on the floor matters. This feature transformed static floor plans into a live analytical layer.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- close section-inner -->
+
+  <div class="img-wrap ratio-2-1">
+    <div class="img-placeholder">
+      <div class="img-placeholder-icon">
+        <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      </div>
+      <div class="img-placeholder-label">Venue Map System<br>Interactive SVG floor plan</div>
+    </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">SVG venue map with machine-level data overlay</div>
+
+  <div class="img-wrap ratio-2-1" style="margin-top: clamp(24px, 3vh, 36px);">
+    <div class="img-placeholder">
+      <div class="img-placeholder-icon">
+        <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      </div>
+      <div class="img-placeholder-label">Map Naming Logic<br>No-code onboarding strategy</div>
+    </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">No-code map onboarding strategy &mdash; repository-driven naming convention</div>
+
+  <div class="section-inner"><!-- reopen section-inner -->
+    <div class="feature-block">
+      <div class="feature-body image-first reveal" style="margin-top: clamp(32px, 4vh, 48px);">
+        <div class="pdi-row">
+          <div class="pdi-item">
+            <div class="pdi-key">The Problem</div>
+            <div class="pdi-body">Venue maps existed only as static image files. Analysts had no way to overlay performance data spatially, meaning they could see the numbers but not the patterns on the floor.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Design Decision</div>
+            <div class="pdi-body">Venue layouts were converted to <strong>SVG-based interactive assets</strong>, enabling dynamic data overlays at the machine level. A naming-convention strategy was introduced so new venues could be onboarded without requiring code changes.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Strategic Value</div>
+            <div class="pdi-body">Beyond usability, this reinforced a core product philosophy: <strong>visual systems accelerate understanding</strong> in complex enterprise environments. Spatial intelligence became a meaningful differentiator from every competing tool in the market.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 3 -->
+    <div class="feature-block">
+      <div class="feature-header reveal">
+        <div class="feature-num">03</div>
+        <div class="feature-meta">
+          <div class="feature-tag">Learning Loop</div>
+          <h3 class="feature-name">Feedback <em>Analyser</em></h3>
+          <p class="feature-premise">Recommendations are only as good as what you learn from them. This module closed the loop between human decisions and machine learning, making rejection as valuable as acceptance.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- close section-inner -->
+
+  <div class="img-wrap ratio-2-1">
+    <div class="img-placeholder">
+      <div class="img-placeholder-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="img-placeholder-label">Feedback Analyser Dashboard<br>Acceptance &amp; rejection patterns</div>
+    </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">Feedback Analyser &mdash; recommendation outcome patterns and rejection reasoning</div>
+
+  <div class="section-inner"><!-- reopen section-inner -->
+    <div class="feature-block">
+      <div class="feature-body reveal" style="margin-top: clamp(32px, 4vh, 48px);">
+        <div class="pdi-row">
+          <div class="pdi-item">
+            <div class="pdi-key">The Problem</div>
+            <div class="pdi-body">When analysts declined a recommendation, the reasoning disappeared. There was no mechanism to understand why certain recommendations were repeatedly rejected, or to feed that understanding back into the model.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Design Decision</div>
+            <div class="pdi-body">The Feedback Analyser surfaced accepted and rejected recommendations alongside rejection reasoning and behavioural patterns. This created a <strong>human expertise to machine intelligence bridge</strong> that grew more valuable over time.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">Why This Matters</div>
+            <div class="pdi-body">In AI-enabled systems, what users reject is often more informative than what they accept. Capturing this signal systematically was central to the platform's long-term value proposition and to earning sustained stakeholder trust.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 4 -->
+    <div class="feature-block" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+      <div class="feature-header reveal">
+        <div class="feature-num">04</div>
+        <div class="feature-meta">
+          <div class="feature-tag">Operational Workflow</div>
+          <h3 class="feature-name">Order Planning <em>&amp; Analysis</em></h3>
+          <p class="feature-premise">Decisions do not end at the recommendation. They become physical machine orders, installation schedules, and manufacturer coordination. This feature brought that downstream reality into the platform.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- close section-inner -->
+
+  <div class="img-wrap ratio-2-1">
+    <div class="img-placeholder">
+      <div class="img-placeholder-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="img-placeholder-label">Order Planning Interface<br>Current state mapping &amp; redesign</div>
+    </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">Order Planning workflow &mdash; from as-is process mapping to redesigned interface</div>
+
+  <div class="img-wrap ratio-2-1" style="margin-top: clamp(24px, 3vh, 36px);">
+    <div class="img-placeholder">
+      <div class="img-placeholder-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="img-placeholder-label">Export Standardisation<br>Column definition system</div>
+    </div>
+  </div>
+  <div class="img-caption" style="padding: 0 var(--gutter);">Export standardisation &mdash; unified order sheet replacing 10+ legacy formats</div>
+
+  <div class="section-inner"><!-- reopen section-inner -->
+    <div class="feature-block" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+      <div class="feature-body image-first reveal" style="margin-top: clamp(32px, 4vh, 48px);">
+        <div class="pdi-row">
+          <div class="pdi-item">
+            <div class="pdi-key">The Discovery</div>
+            <div class="pdi-body">The team used approximately <strong>ten different order sheet formats</strong>, with similar information appearing under different naming conventions across documents. Fragmentation created inconsistency and coordination overhead.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Design Contribution</div>
+            <div class="pdi-body">Order workflow analysis led to standardised column definitions, improved export structures, and a single operational environment supporting the entire order lifecycle. This illustrates how design contribution extended well beyond interface work.</div>
+          </div>
+          <div class="pdi-item">
+            <div class="pdi-key">The Broader Point</div>
+            <div class="pdi-body">Enterprise UX is often workflow design in disguise. The most impactful work on this project did not happen in screen layouts. It happened in understanding the <strong>full operational system</strong> around the screen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: OUTCOMES -->
+<section class="section outcomes-section">
+  <div class="section-inner">
+    <div class="section-tag">Outcomes</div>
+    <h2 class="section-title" style="color: var(--white)">Numbers that <em style="color: rgba(253,252,251,0.55)">moved</em>. Behaviours that changed.</h2>
+
+    <div class="outcomes-stat-grid">
+      <div class="outcome-stat reveal">
+        <div class="os-num">$20M</div>
+        <div class="os-label">Revenue uplift attributed to GIH recommendations, FY24&ndash;25</div>
+      </div>
+      <div class="outcome-stat reveal rd1">
+        <div class="os-num">95%</div>
+        <div class="os-label">Recommendation acceptance rate from the gaming analyst team</div>
+      </div>
+      <div class="outcome-stat reveal rd2">
+        <div class="os-num">200+</div>
+        <div class="os-label">Recommendations generated and reviewed every week</div>
+      </div>
+      <div class="outcome-stat reveal rd3">
+        <div class="os-num">0.5 day</div>
+        <div class="os-label">Typical review cycle, down from a multi-day manual process</div>
+      </div>
+    </div>
+
+    <div class="outcomes-qual">
+      <div class="oq-item reveal">
+        <div class="oq-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="oq-head">Production Deployment</div>
+        <div class="oq-body">Gaming Intelligence Hub became part of daily operational activity for the Gaming Head and analysts. This was not a prototype or pilot. It was the primary environment for decision-making at Endeavour's gaming scale.</div>
+      </div>
+      <div class="oq-item reveal rd1">
+        <div class="oq-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="oq-head">Earned Trust from Domain Experts</div>
+        <div class="oq-body">The most meaningful signal of success: gaming specialists with decades of experience began relying on the platform, reviewing recommendations, and actioning outputs. Technology adoption in expert-driven domains is never a given.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Stakeholder Feedback</div>
+    <div class="testimonial-pair">
+      <div class="tcard primary reveal">
+        <div class="tcard-qmark">"</div>
+        <p class="tcard-text">Pankaj has been an outstanding partner throughout our engagement. His ability to translate complex data science outputs into clear, actionable interfaces made our team significantly more effective. The platform he designed changed how we make decisions at a venue level.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MM</div>
+          <div>
+            <div class="tcard-name">Mark Matthews</div>
+            <div class="tcard-role">Product Owner, Endeavour Group, Australia</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard secondary reveal rd1">
+        <div class="tcard-qmark">"</div>
+        <p class="tcard-text">Working with Pankaj on the Gaming Intelligence Hub was a genuinely collaborative experience. He has an unusual ability to ask the right questions early, which saved us significant rework downstream. He bridges business analysis and UX in a way I haven't often encountered.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MF</div>
+          <div>
+            <div class="tcard-name">Matthew Falia</div>
+            <div class="tcard-role">Lead Business Analyst, Endeavour Group, Australia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: REFLECTION -->
+<section class="section reflection-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Reflection</div>
+    <h2 class="section-title reveal">What this project <em>taught</em> me about design leadership</h2>
+
+    <div class="reflection-grid">
+      <div class="reflection-card reveal">
+        <div class="rc-index">Learning 01</div>
+        <h3 class="rc-title">Designing for AI is designing <em>for trust</em></h3>
+        <p class="rc-body">Recommendation quality alone does not drive adoption. Users need transparency, rationale, and confidence signals before they will change behaviour based on a system's output. Trust is a design problem. It has to be deliberately engineered into every surface that touches a recommendation.</p>
+      </div>
+      <div class="reflection-card reveal rd1">
+        <div class="rc-index">Learning 02</div>
+        <h3 class="rc-title">Enterprise UX is often <em>workflow design</em></h3>
+        <p class="rc-body">The most impactful contributions on this project were not screen-level decisions. They were decisions about information flow, operational sequencing, and how expertise moves through an organisation. If you are not thinking about the system around the interface, you are thinking too small.</p>
+      </div>
+      <div class="reflection-card reveal rd2">
+        <div class="rc-index">Learning 03</div>
+        <h3 class="rc-title">Product definition is <em>sometimes a design responsibility</em></h3>
+        <p class="rc-body">In environments where roadmap clarity is incomplete and stakeholder responsiveness varies, design leadership means stepping into the product definition gap. This is not overstepping. It is what keeps work moving and keeps the team aligned when prescription is not available.</p>
+      </div>
+      <div class="reflection-card reveal rd3">
+        <div class="rc-index">Learning 04</div>
+        <h3 class="rc-title">Ambiguity can become <em>a design strength</em></h3>
+        <p class="rc-body">This project contained more ambiguity than most. Scope changed. Priorities shifted. Data constraints arrived mid-project. The design response was to treat ambiguity as material: use it to create structure, direction, and alignment where none existed. That capability is undervalued and rarely articulated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STRIP -->
+<div class="next-strip">
+  <div>
+    <a href="../index.html" class="back-home-link">
+      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      All Projects
+    </a>
+  </div>
+  <div>
+    <div class="next-label">Next Case Study</div>
+    <a href="slot-categorisation.html" class="next-link">
+      Slot Game Categorisation Framework
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Pankaj Khamitkar &bull; UX Design Leader</div>
+  <div class="footer-coords">18&#176;31'N &nbsp;73&#176;51'E &nbsp;&bull;&nbsp; Pune, India</div>
+  <div class="footer-links">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="mailto:pan.khamitkar@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
